@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>for sayangku&lt;3!</title>
+<title>for sayangku<3!</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -31,14 +32,16 @@ body{
   overflow-x:hidden;
 }
 
-button{
+button,
+textarea{
   font-family:inherit;
   -webkit-tap-highlight-color:transparent;
 }
 
-/* =================================================
+
+/* =====================================================
    GENERAL
-================================================= */
+===================================================== */
 
 .screen{
   min-height:100vh;
@@ -48,9 +51,10 @@ button{
   padding:25px 18px;
 }
 
-/* =================================================
+
+/* =====================================================
    LOCK SCREEN
-================================================= */
+===================================================== */
 
 #lockScreen{
   overflow:hidden;
@@ -130,10 +134,6 @@ button{
   transform:rotate(-38deg) translate(-7px,-7px);
 }
 
-.lock.open .lock-body{
-  animation:bounce .7s ease;
-}
-
 .pin{
   display:flex;
   justify-content:center;
@@ -188,6 +188,11 @@ button{
   font-size:18px;
 }
 
+
+/* =====================================================
+   HEART EFFECT
+===================================================== */
+
 .heart{
   position:fixed;
   z-index:100;
@@ -196,9 +201,10 @@ button{
   animation:heartBurst 1.2s ease forwards;
 }
 
-/* =================================================
+
+/* =====================================================
    ENVELOPE
-================================================= */
+===================================================== */
 
 #envelopeScreen{
   display:none;
@@ -238,7 +244,7 @@ button{
   border-radius:4px;
   box-shadow:0 17px 35px rgba(100,65,59,.14);
   overflow:visible;
-  transition:transform .9s ease, opacity .8s ease;
+  transition:transform .9s ease,opacity .8s ease;
 }
 
 .flap{
@@ -279,7 +285,7 @@ button{
   justify-content:center;
   align-items:center;
   font-size:19px;
-  transition:opacity .25s, transform .5s ease;
+  transition:opacity .25s,transform .5s ease;
 }
 
 .envelope-label{
@@ -300,7 +306,6 @@ button{
   margin-top:18px;
 }
 
-/* amplop dibuka */
 .envelope-area.opened .flap{
   transform:rotateX(180deg);
 }
@@ -314,9 +319,10 @@ button{
   animation:envelopeOpen .9s ease forwards;
 }
 
-/* =================================================
+
+/* =====================================================
    LETTER
-================================================= */
+===================================================== */
 
 #letterScreen{
   display:none;
@@ -361,7 +367,6 @@ button{
   font-size:14px;
   line-height:1.9;
   color:#705650;
-  font-weight:400;
 }
 
 .cursor{
@@ -396,9 +401,10 @@ button{
   margin-top:3px;
 }
 
-/* =================================================
-   AESTHETIC FLOWER
-================================================= */
+
+/* =====================================================
+   FLOWER
+===================================================== */
 
 .corner-flower{
   position:relative;
@@ -478,12 +484,12 @@ button{
   left:30px;
   top:30px;
   z-index:5;
-  box-shadow:0 2px 5px rgba(100,60,55,.12);
 }
 
-/* =================================================
+
+/* =====================================================
    NEXT BUTTON
-================================================= */
+===================================================== */
 
 .next-wrap{
   opacity:0;
@@ -529,54 +535,82 @@ button{
   transform:scale(.9);
 }
 
-/* =================================================
+
+/* =====================================================
    QUESTION
-================================================= */
+   — SATU BARIS
+   — BENAR-BENAR SEPERTI KOLOM PERTANYAAN
+===================================================== */
 
 #questionScreen{
   display:none;
   min-height:100vh;
   align-items:center;
   justify-content:center;
-  padding:25px;
+  padding:25px 18px;
   text-align:center;
 }
 
 .question-box{
-  width:min(390px,100%);
+  width:min(580px,100%);
   animation:fadeIn .8s ease;
 }
 
-.question-small{
-  font-family:"Caveat",cursive;
-  font-size:21px;
-  color:#a8736b;
-  margin-bottom:20px;
+.question{
+  font-family:"DM Sans",sans-serif;
+  font-size:18px;
+  font-weight:500;
+  color:#644640;
+  margin-bottom:24px;
 }
 
-.question{
+.question-card{
+  width:100%;
+  padding:18px 20px;
+  border:1px solid #dfc3bd;
+  border-radius:16px;
+  background:rgba(255,253,250,.82);
+  box-shadow:
+    0 8px 24px rgba(100,65,59,.08),
+    inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.question-input-line{
+  width:100%;
+  border:none;
+  outline:none;
+  background:transparent;
+  text-align:center;
+  color:#78544e;
   font-family:"Caveat",cursive;
-  font-size:39px;
-  line-height:1.05;
-  color:#6d4b46;
-  margin-bottom:32px;
+  font-size:29px;
+  resize:none;
+  overflow:hidden;
+  min-height:42px;
+}
+
+.question-input-line::placeholder{
+  color:#a98780;
 }
 
 .answers{
   display:flex;
-  flex-direction:column;
-  gap:14px;
+  flex-direction:row;
+  justify-content:center;
   align-items:center;
+  gap:12px;
+  margin-top:20px;
 }
 
 .answer{
-  width:min(285px,85vw);
-  min-height:53px;
+  flex:1;
+  max-width:190px;
+  min-height:52px;
   border:1px solid #e2bbb4;
-  border-radius:28px;
+  border-radius:15px;
   background:#f1d5cf;
   color:#714e49;
-  font-size:15px;
+  font-size:14px;
   cursor:pointer;
   box-shadow:0 6px 17px rgba(100,65,59,.09);
   transition:.2s;
@@ -588,10 +622,6 @@ button{
 
 .answer:active{
   transform:scale(.96);
-}
-
-.wrong{
-  animation:wrongShake .45s ease;
 }
 
 .tetot{
@@ -608,9 +638,11 @@ button{
   opacity:1;
 }
 
-/* =================================================
+
+/* =====================================================
    FINAL
-================================================= */
+   — TANPA "HEHE I KNEW IT"
+===================================================== */
 
 #finalScreen{
   display:none;
@@ -624,80 +656,95 @@ button{
 }
 
 .final-content{
-  width:min(420px,100%);
+  width:min(460px,100%);
   animation:finalPop 1s cubic-bezier(.2,.8,.2,1);
 }
 
 .final-card{
-  padding:42px 25px 35px;
+  padding:48px 25px 34px;
   border-radius:30px;
-  background:
-    radial-gradient(circle at 20% 10%,rgba(255,255,255,.9),transparent 28%),
-    #fff7f3;
+  background:#fff7f3;
   box-shadow:
     0 20px 55px rgba(100,65,59,.14),
     inset 0 0 0 1px rgba(190,130,120,.12);
 }
 
-.final-small{
-  font-family:"Caveat",cursive;
-  font-size:24px;
-  color:#a8736b;
-  margin-bottom:13px;
-}
-
 .final-text{
   font-family:"Caveat",cursive;
-  font-size:clamp(43px,12vw,67px);
-  line-height:.95;
+  font-size:clamp(46px,13vw,72px);
+  line-height:.93;
   font-weight:700;
   color:#bd7169;
 }
 
 .kiss-zone{
   position:relative;
-  height:105px;
-  margin-top:16px;
+  width:100%;
+  height:260px;
+  margin-top:10px;
+  overflow:visible;
 }
 
 .kiss{
   position:absolute;
-  font-size:34px;
+  font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+  font-size:clamp(50px,15vw,82px);
   opacity:0;
-  animation:kissPop 2.2s ease-in-out infinite;
+  animation:naturalKiss 4.8s ease-in-out infinite;
+  filter:drop-shadow(0 5px 7px rgba(90,50,45,.08));
 }
 
 .kiss:nth-child(1){
-  left:20%;
-  top:25px;
+  left:2%;
+  top:75px;
   animation-delay:0s;
 }
 
 .kiss:nth-child(2){
-  left:45%;
-  top:4px;
-  animation-delay:.45s;
+  left:25%;
+  top:5px;
+  animation-delay:1.1s;
 }
 
 .kiss:nth-child(3){
-  right:18%;
-  top:28px;
-  animation-delay:.9s;
+  right:19%;
+  top:70px;
+  animation-delay:2.1s;
 }
 
 .kiss:nth-child(4){
-  left:33%;
-  top:55px;
-  animation-delay:1.35s;
+  right:-2%;
+  top:18px;
+  animation-delay:3.1s;
+}
+
+.kiss:nth-child(5){
+  left:10%;
+  bottom:5px;
+  animation-delay:1.7s;
+}
+
+.kiss:nth-child(6){
+  right:7%;
+  bottom:-3px;
+  animation-delay:3.8s;
+}
+
+.kiss:nth-child(7){
+  left:43%;
+  top:95px;
+  animation-delay:2.7s;
 }
 
 .final-next{
-  margin-top:8px;
+  margin-top:-4px;
 }
 
-/* =================================================
-   WARNING SCREEN
-================================================= */
+
+/* =====================================================
+   WARNING
+   — LEBIH HEBOH
+===================================================== */
 
 #warningScreen{
   display:none;
@@ -708,60 +755,85 @@ button{
   text-align:center;
   position:relative;
   overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 50%,#fff3ed 0,#f6ddd7 42%,#efd0c9 100%);
 }
 
 .warning-box{
-  width:min(440px,100%);
+  width:min(470px,100%);
   position:relative;
   animation:fadeIn .8s ease;
 }
 
 .warning-bg-symbol{
   position:absolute;
-  font-size:42px;
-  opacity:.16;
-  animation:warningPop 1.6s infinite ease-in-out;
+  font-size:clamp(45px,14vw,78px);
+  opacity:.18;
+  animation:warningPop 1.3s infinite ease-in-out;
+  z-index:1;
 }
 
 .warning-bg-symbol:nth-child(1){
-  left:-5px;
-  top:-30px;
+  left:-15px;
+  top:-55px;
   animation-delay:0s;
 }
 
 .warning-bg-symbol:nth-child(2){
-  right:5px;
-  top:20px;
-  animation-delay:.4s;
+  right:-8px;
+  top:-30px;
+  animation-delay:.25s;
 }
 
 .warning-bg-symbol:nth-child(3){
-  left:20px;
-  bottom:-35px;
-  animation-delay:.8s;
+  left:-30px;
+  bottom:-60px;
+  animation-delay:.55s;
 }
 
 .warning-bg-symbol:nth-child(4){
-  right:35px;
-  bottom:-20px;
-  animation-delay:1.2s;
+  right:-20px;
+  bottom:-45px;
+  animation-delay:.85s;
+}
+
+.warning-bg-symbol:nth-child(5){
+  left:35%;
+  top:-75px;
+  animation-delay:.4s;
+}
+
+.warning-bg-symbol:nth-child(6){
+  left:42%;
+  bottom:-70px;
+  animation-delay:1s;
 }
 
 .warning-card{
   position:relative;
   z-index:2;
-  padding:38px 25px;
-  border-radius:28px;
-  background:#fff7f3;
-  border:2px solid rgba(190,110,100,.18);
-  box-shadow:0 20px 55px rgba(100,65,59,.13);
+  padding:42px 25px;
+  border-radius:30px;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,.15) 0,
+      rgba(255,255,255,.15) 7px,
+      transparent 7px,
+      transparent 14px
+    ),
+    #fff5f0;
+  border:2px solid rgba(190,90,80,.22);
+  box-shadow:
+    0 20px 60px rgba(100,55,50,.17),
+    0 0 0 8px rgba(255,255,255,.2);
 }
 
 .warning-title{
   font-family:"Caveat",cursive;
-  font-size:26px;
-  color:#b35e56;
-  margin-bottom:18px;
+  font-size:29px;
+  color:#b6534b;
+  margin-bottom:19px;
 }
 
 .warning-text{
@@ -777,62 +849,85 @@ button{
 }
 
 .warning-tap{
-  margin-top:25px;
+  margin-top:27px;
   font-size:11px;
   letter-spacing:1px;
   text-transform:uppercase;
-  color:#a97972;
-  animation:softPulse 1.4s infinite;
+  color:#a45e57;
+  animation:softPulse 1.2s infinite;
 }
 
-/* =================================================
-   NOTE SCREEN
-================================================= */
+
+/* =====================================================
+   NOTE / REPLY PAGE
+===================================================== */
 
 #noteScreen{
   display:none;
   min-height:100vh;
   align-items:center;
   justify-content:center;
-  padding:35px 20px;
+  padding:30px 20px 55px;
 }
 
 .note-stage{
-  width:min(470px,100%);
+  width:min(500px,100%);
   animation:fadeIn .8s ease;
 }
 
-.iphone-bubble{
+
+/* Bubble pertanyaan */
+
+.bubble-question-wrap{
+  position:relative;
+  margin:0 auto 22px 5px;
   width:max-content;
-  max-width:85%;
-  margin:0 auto 25px 10px;
+  max-width:91%;
+}
+
+.iphone-bubble{
+  position:relative;
+  width:max-content;
+  max-width:100%;
   padding:12px 17px;
   border-radius:20px 20px 20px 6px;
   background:#e9e9eb;
   color:#252525;
   font-size:13px;
-  line-height:1.35;
+  line-height:1.4;
   box-shadow:0 4px 12px rgba(0,0,0,.07);
-  position:relative;
   animation:bubbleIn .8s ease;
 }
 
-.iphone-bubble::after{
-  content:"";
+
+/*
+  Tanda ?! SETENGAH di dalam,
+  SETENGAH di luar bubble.
+*/
+
+.bubble-question-mark{
   position:absolute;
-  left:-5px;
-  bottom:0;
-  width:12px;
-  height:12px;
-  background:#e9e9eb;
-  clip-path:polygon(100% 0,100% 100%,0 100%);
+  right:-17px;
+  top:-13px;
+  font-family:"Caveat",cursive;
+  font-size:31px;
+  font-weight:700;
+  color:#a96058;
+  transform:rotate(10deg);
+  z-index:4;
+  text-shadow:0 2px 3px rgba(100,60,55,.08);
 }
 
-.note-paper{
+
+/* =====================================================
+   KERTAS BALASAN
+===================================================== */
+
+.reply-paper{
   position:relative;
   width:100%;
-  min-height:410px;
-  padding:43px 30px 38px;
+  min-height:390px;
+  padding:40px 30px 105px;
   background:
     repeating-linear-gradient(
       to bottom,
@@ -845,10 +940,10 @@ button{
   box-shadow:
     0 18px 50px rgba(100,65,59,.15),
     0 2px 5px rgba(100,65,59,.06);
-  transform:rotate(-.6deg);
+  transform:rotate(-.4deg);
 }
 
-.note-paper::before{
+.reply-paper::before{
   content:"";
   position:absolute;
   left:18px;
@@ -868,66 +963,206 @@ button{
   transform:translateX(-50%) rotate(1deg);
 }
 
-.note-content{
+.reply-label{
   position:relative;
   z-index:2;
-  text-align:center;
+  font-family:"Caveat",cursive;
+  font-size:24px;
+  color:#a87972;
+  margin-bottom:16px;
 }
 
-.note-small{
+.reply-textarea{
+  position:relative;
+  z-index:2;
+  display:block;
+  width:100%;
+  min-height:235px;
+  resize:none;
+  border:none;
+  outline:none;
+  background:transparent;
+  color:#654640;
   font-family:"Caveat",cursive;
-  font-size:20px;
-  color:#a87972;
-  margin-bottom:7px;
+  font-size:22px;
+  line-height:1.55;
+  padding:3px 0;
+}
+
+.reply-textarea::placeholder{
+  color:#b79a94;
+}
+
+
+/* =====================================================
+   SEND TO MY GF
+   — DI LUAR DAN DI BAWAH KERTAS
+===================================================== */
+
+.send-section{
+  margin-top:24px;
+  text-align:center;
 }
 
 .send-title{
   font-family:"DM Sans",sans-serif;
-  font-size:22px;
+  font-size:14px;
   font-weight:700;
-  letter-spacing:.8px;
-  color:#654640;
-  margin-bottom:25px;
+  letter-spacing:1.3px;
+  color:#75514b;
+  margin-bottom:10px;
 }
 
-.send-row{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-}
-
-.send-bubble{
+.send-button{
   border:none;
-  min-width:105px;
-  padding:12px 25px;
-  border-radius:22px;
+  min-width:138px;
+  padding:13px 20px;
+  border-radius:18px;
   background:#e8b8b0;
   color:#68443f;
   font-weight:600;
   font-size:14px;
   cursor:pointer;
-  box-shadow:0 6px 14px rgba(100,65,59,.12);
+  box-shadow:0 7px 18px rgba(100,65,59,.12);
+  transition:.2s ease;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+.send-button span{
+  font-size:18px;
+  line-height:1;
+}
+
+.send-button:hover{
+  transform:translateY(-2px);
+}
+
+.send-button:active{
+  transform:scale(.95);
+}
+
+
+/* =====================================================
+   CONFIRMATION MODAL
+===================================================== */
+
+.confirm-overlay{
+  position:fixed;
+  inset:0;
+  z-index:500;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  background:rgba(80,55,50,.24);
+  backdrop-filter:blur(7px);
+}
+
+.confirm-overlay.show{
+  display:flex;
+}
+
+.confirm-box{
+  width:min(370px,100%);
+  padding:31px 24px 24px;
+  border-radius:25px;
+  background:#fffaf6;
+  box-shadow:0 25px 70px rgba(60,40,35,.2);
+  text-align:center;
+  animation:modalIn .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.confirm-question{
+  font-family:"Caveat",cursive;
+  font-size:28px;
+  line-height:1.18;
+  color:#684640;
+  margin-bottom:24px;
+}
+
+.confirm-options{
+  display:flex;
+  gap:10px;
+}
+
+.confirm-btn{
+  flex:1;
+  min-height:48px;
+  border-radius:15px;
+  border:1px solid #e3c4bd;
+  cursor:pointer;
+  font-size:13px;
   transition:.2s;
 }
 
-.send-bubble:active{
-  transform:scale(.93);
+.not-yet{
+  background:#f7ebe7;
+  color:#76524c;
 }
 
-.send-arrow{
-  font-size:28px;
-  color:#9e6962;
-  animation:arrowFloat 1.5s infinite ease-in-out;
+.yes-send{
+  background:#e5b0a7;
+  color:#65413c;
 }
 
-/* =================================================
+.confirm-btn:active{
+  transform:scale(.95);
+}
+
+
+/* =====================================================
+   SENT
+===================================================== */
+
+.sent-overlay{
+  position:fixed;
+  inset:0;
+  z-index:600;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  background:
+    radial-gradient(circle at center,#fffaf7 0,#f5ddd7 65%,#efd0c9 100%);
+  text-align:center;
+}
+
+.sent-overlay.show{
+  display:flex;
+}
+
+.sent-message{
+  font-family:"Caveat",cursive;
+  font-size:42px;
+  line-height:1.05;
+  color:#a95e56;
+  animation:sentIn .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.sent-check{
+  display:block;
+  font-family:"DM Sans",sans-serif;
+  font-size:25px;
+  margin-top:10px;
+}
+
+
+/* =====================================================
    ANIMATIONS
-================================================= */
+===================================================== */
 
 @keyframes fadeIn{
-  from{opacity:0;transform:translateY(14px)}
-  to{opacity:1;transform:translateY(0)}
+  from{
+    opacity:0;
+    transform:translateY(14px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 @keyframes paperIn{
@@ -939,12 +1174,6 @@ button{
     opacity:1;
     transform:translateY(0) scale(1);
   }
-}
-
-@keyframes bounce{
-  0%,100%{transform:translateY(0)}
-  40%{transform:translateY(-7px)}
-  70%{transform:translateY(2px)}
 }
 
 @keyframes envelopeOpen{
@@ -963,7 +1192,9 @@ button{
 }
 
 @keyframes blink{
-  50%{opacity:0}
+  50%{
+    opacity:0;
+  }
 }
 
 @keyframes heartBurst{
@@ -978,16 +1209,30 @@ button{
 }
 
 @keyframes shake{
-  25%{transform:translateX(-6px)}
-  75%{transform:translateX(6px)}
+  25%{
+    transform:translateX(-6px);
+  }
+  75%{
+    transform:translateX(6px);
+  }
 }
 
 @keyframes wrongShake{
-  0%,100%{transform:translateX(0)}
-  20%{transform:translateX(-9px)}
-  40%{transform:translateX(9px)}
-  60%{transform:translateX(-7px)}
-  80%{transform:translateX(7px)}
+  0%,100%{
+    transform:translateX(0);
+  }
+  20%{
+    transform:translateX(-9px);
+  }
+  40%{
+    transform:translateX(9px);
+  }
+  60%{
+    transform:translateX(-7px);
+  }
+  80%{
+    transform:translateX(7px);
+  }
 }
 
 @keyframes finalPop{
@@ -996,7 +1241,7 @@ button{
     transform:scale(.65);
   }
   70%{
-    transform:scale(1.06);
+    transform:scale(1.05);
   }
   100%{
     opacity:1;
@@ -1004,43 +1249,60 @@ button{
   }
 }
 
-@keyframes kissPop{
-  0%,100%{
+
+/*
+  💋 sekarang ukurannya besar,
+  menyebar memenuhi area,
+  gerakannya lambat dan tidak meletup
+  secara kecil-kecil.
+*/
+
+@keyframes naturalKiss{
+  0%{
     opacity:0;
-    transform:scale(.3) translateY(10px) rotate(-10deg);
+    transform:translateY(25px) scale(.75) rotate(-12deg);
   }
-  20%{
+
+  15%{
+    opacity:.95;
+  }
+
+  45%{
     opacity:1;
-    transform:scale(1.25) translateY(0) rotate(8deg);
+    transform:translateY(-8px) scale(1) rotate(7deg);
   }
-  40%{
-    opacity:1;
-    transform:scale(1) translateY(-8px) rotate(-5deg);
+
+  70%{
+    opacity:.9;
+    transform:translateY(-28px) scale(1.06) rotate(-5deg);
   }
-  65%{
-    opacity:.8;
-    transform:scale(1.1) translateY(-20px) rotate(7deg);
-  }
-  80%{
+
+  100%{
     opacity:0;
-    transform:scale(.7) translateY(-38px) rotate(-8deg);
+    transform:translateY(-60px) scale(.92) rotate(9deg);
   }
 }
 
 @keyframes warningPop{
   0%,100%{
-    transform:scale(.65) rotate(-8deg);
+    transform:scale(.65) rotate(-10deg);
     opacity:.12;
   }
+
   50%{
-    transform:scale(1.25) rotate(8deg);
-    opacity:.3;
+    transform:scale(1.3) rotate(9deg);
+    opacity:.35;
   }
 }
 
 @keyframes softPulse{
-  0%,100%{opacity:.5}
-  50%{opacity:1}
+  0%,100%{
+    opacity:.45;
+  }
+
+  50%{
+    opacity:1;
+  }
 }
 
 @keyframes bubbleIn{
@@ -1048,18 +1310,43 @@ button{
     opacity:0;
     transform:translateY(12px) scale(.92);
   }
+
   to{
     opacity:1;
     transform:translateY(0) scale(1);
   }
 }
 
-@keyframes arrowFloat{
-  0%,100%{transform:translateX(0)}
-  50%{transform:translateX(5px)}
+@keyframes modalIn{
+  from{
+    opacity:0;
+    transform:scale(.9) translateY(12px);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
 }
 
-@media(max-width:420px){
+@keyframes sentIn{
+  0%{
+    opacity:0;
+    transform:scale(.7);
+  }
+
+  65%{
+    transform:scale(1.06);
+  }
+
+  100%{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+
+@media(max-width:480px){
 
   .lock-title{
     font-size:45px;
@@ -1084,19 +1371,43 @@ button{
     font-size:25px;
   }
 
-  .note-paper{
+  .warning-card{
+    padding:38px 21px;
+  }
+
+  .answers{
+    gap:9px;
+  }
+
+  .answer{
+    font-size:13px;
+  }
+
+  .question-input-line{
+    font-size:26px;
+  }
+
+  .reply-paper{
     padding-left:27px;
     padding-right:27px;
   }
+
+  .reply-textarea{
+    font-size:20px;
+  }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =================================================
-     1. LOCK
-================================================= -->
+
+<!-- =====================================================
+     LOCK
+===================================================== -->
 
 <section id="lockScreen" class="screen">
 
@@ -1162,9 +1473,9 @@ button{
 </section>
 
 
-<!-- =================================================
-     2. ENVELOPE
-================================================= -->
+<!-- =====================================================
+     ENVELOPE
+===================================================== -->
 
 <section id="envelopeScreen" class="screen">
 
@@ -1203,9 +1514,9 @@ button{
 </section>
 
 
-<!-- =================================================
-     3. LETTER
-================================================= -->
+<!-- =====================================================
+     LETTER
+===================================================== -->
 
 <section id="letterScreen">
 
@@ -1229,7 +1540,6 @@ button{
 
     </div>
 
-    <!-- BUNGA DI UJUNG KANAN KERTAS -->
 
     <div class="corner-flower" id="cornerFlower">
 
@@ -1252,7 +1562,6 @@ button{
 
     </div>
 
-    <!-- NEXT -->
 
     <div class="next-wrap" id="nextWrap">
 
@@ -1267,20 +1576,27 @@ button{
 </section>
 
 
-<!-- =================================================
-     4. QUESTION
-================================================= -->
+<!-- =====================================================
+     QUESTION
+===================================================== -->
 
 <section id="questionScreen">
 
   <div class="question-box">
 
-    <div class="question-small">
-      one more thing... ♡
+    <div class="question">
+      kamu sayang aku ga?
     </div>
 
-    <div class="question">
-      kamu masi sayang aku ga?
+    <div class="question-card">
+
+      <input
+        class="question-input-line"
+        type="text"
+        placeholder="jawab jujur..."
+        autocomplete="off"
+      >
+
     </div>
 
     <div class="answers">
@@ -1304,19 +1620,15 @@ button{
 </section>
 
 
-<!-- =================================================
-     5. FINAL
-================================================= -->
+<!-- =====================================================
+     FINAL
+===================================================== -->
 
 <section id="finalScreen">
 
   <div class="final-content">
 
     <div class="final-card">
-
-      <div class="final-small">
-        hehe... i knew it ♡
-      </div>
 
       <div class="final-text">
         YEAYYY,<br>
@@ -1330,8 +1642,12 @@ button{
         <span class="kiss">💋</span>
         <span class="kiss">💋</span>
         <span class="kiss">💋</span>
+        <span class="kiss">💋</span>
+        <span class="kiss">💋</span>
+        <span class="kiss">💋</span>
 
       </div>
+
 
       <div class="next-wrap final-next" id="finalNextWrap">
 
@@ -1348,9 +1664,9 @@ button{
 </section>
 
 
-<!-- =================================================
-     6. WARNING
-================================================= -->
+<!-- =====================================================
+     WARNING
+===================================================== -->
 
 <section id="warningScreen">
 
@@ -1360,6 +1676,9 @@ button{
     <div class="warning-bg-symbol">⛔️</div>
     <div class="warning-bg-symbol">⁉️</div>
     <div class="warning-bg-symbol">⚠️</div>
+    <div class="warning-bg-symbol">⛔️</div>
+    <div class="warning-bg-symbol">⁉️</div>
+
 
     <div class="warning-card">
 
@@ -1374,7 +1693,7 @@ button{
       </div>
 
       <div class="warning-tap">
-        tap to continue ⛔️
+        tap to continue
       </div>
 
     </div>
@@ -1384,45 +1703,66 @@ button{
 </section>
 
 
-<!-- =================================================
-     7. NOTE
-================================================= -->
+<!-- =====================================================
+     NOTE / REPLY
+===================================================== -->
 
 <section id="noteScreen">
 
   <div class="note-stage">
 
-    <div class="iphone-bubble">
-      aku mau liat sebenarnya kamu tu cinta ga si sama aku
+
+    <!-- CHAT BUBBLE -->
+
+    <div class="bubble-question-wrap">
+
+      <div class="iphone-bubble">
+        aku mau liat sebenarnya kamu tu cinta ga si sama aku
+      </div>
+
+      <div class="bubble-question-mark">
+        ?!
+      </div>
+
     </div>
 
-    <div class="note-paper">
+
+    <!-- KERTAS UNTUK MENULIS -->
+
+    <div class="reply-paper">
 
       <div class="note-tape"></div>
 
-      <div class="note-content">
-
-        <div class="note-small">
-          one last thing...
-        </div>
-
-        <div class="send-title">
-          SEND TO MY GF
-        </div>
-
-        <div class="send-row">
-
-          <button class="send-bubble" id="sendButton">
-            send
-          </button>
-
-          <div class="send-arrow">
-            →
-          </div>
-
-        </div>
-
+      <div class="reply-label">
+        write your answer here...
       </div>
+
+      <textarea
+        id="replyText"
+        class="reply-textarea"
+        placeholder="tulis jawaban kamu..."
+        maxlength="2000"
+      ></textarea>
+
+    </div>
+
+
+    <!-- SEND TO MY GF DI LUAR KERTAS -->
+
+    <div class="send-section">
+
+      <div class="send-title">
+        SEND TO MY GF
+      </div>
+
+      <button
+        class="send-button"
+        id="sendButton"
+        type="button"
+      >
+        send
+        <span>↗</span>
+      </button>
 
     </div>
 
@@ -1431,17 +1771,81 @@ button{
 </section>
 
 
+<!-- =====================================================
+     CONFIRMATION
+===================================================== -->
+
+<div
+  class="confirm-overlay"
+  id="confirmOverlay"
+>
+
+  <div class="confirm-box">
+
+    <div class="confirm-question">
+      kamu sudah yakin jawaban ini yang akan diberikan pada pacarmu?
+    </div>
+
+    <div class="confirm-options">
+
+      <button
+        class="confirm-btn not-yet"
+        id="notYet"
+      >
+        belum sih
+      </button>
+
+      <button
+        class="confirm-btn yes-send"
+        id="yesSend"
+      >
+        yakin
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     SENT
+===================================================== -->
+
+<div
+  class="sent-overlay"
+  id="sentOverlay"
+>
+
+  <div class="sent-message">
+
+    balasan sudah dikirim
+    <span class="sent-check">
+      ✅️
+    </span>
+
+  </div>
+
+</div>
+
+
 <script>
 
-/* =================================================
+
+/* =====================================================
    PIN
-================================================= */
+===================================================== */
 
 const correctPIN = "0311";
+
 let enteredPIN = "";
 
-const pinBoxes = document.querySelectorAll(".pin-box");
-const lock = document.getElementById("lock");
+const pinBoxes =
+  document.querySelectorAll(".pin-box");
+
+const lock =
+  document.getElementById("lock");
 
 const lockScreen =
   document.getElementById("lockScreen");
@@ -1465,13 +1869,17 @@ const noteScreen =
   document.getElementById("noteScreen");
 
 
-document.querySelectorAll("[data-number]").forEach(button => {
+document
+.querySelectorAll("[data-number]")
+.forEach(button => {
 
-  button.addEventListener("click", () => {
+  button.addEventListener("click",() => {
 
-    if(enteredPIN.length >= 4) return;
+    if(enteredPIN.length >= 4)
+      return;
 
-    enteredPIN += button.dataset.number;
+    enteredPIN +=
+      button.dataset.number;
 
     updatePIN();
 
@@ -1504,8 +1912,9 @@ document.querySelectorAll("[data-number]").forEach(button => {
 });
 
 
-document.getElementById("delete")
-.addEventListener("click", () => {
+document
+.getElementById("delete")
+.addEventListener("click",() => {
 
   enteredPIN =
     enteredPIN.slice(0,-1);
@@ -1529,17 +1938,17 @@ function updatePIN(){
 }
 
 
-/* =================================================
+/* =====================================================
    UNLOCK
-================================================= */
+===================================================== */
 
 function unlock(){
 
   lock.classList.add("open");
 
   createHearts(
-    window.innerWidth / 2,
-    window.innerHeight / 2 - 30,
+    window.innerWidth/2,
+    window.innerHeight/2-30,
     12
   );
 
@@ -1554,9 +1963,9 @@ function unlock(){
 }
 
 
-/* =================================================
-   HEART EFFECT
-================================================= */
+/* =====================================================
+   HEARTS
+===================================================== */
 
 function createHearts(x,y,count){
 
@@ -1569,8 +1978,8 @@ function createHearts(x,y,count){
 
     h.textContent = "♥";
 
-    h.style.left = x + "px";
-    h.style.top = y + "px";
+    h.style.left = x+"px";
+    h.style.top = y+"px";
 
     h.style.setProperty(
       "--x",
@@ -1592,21 +2001,24 @@ function createHearts(x,y,count){
 
     document.body.appendChild(h);
 
-    setTimeout(() => h.remove(),1300);
+    setTimeout(
+      () => h.remove(),
+      1300
+    );
 
   }
 
 }
 
 
-/* =================================================
+/* =====================================================
    ENVELOPE
-================================================= */
+===================================================== */
 
 const envelope =
   document.getElementById("envelope");
 
-envelope.addEventListener("click", () => {
+envelope.addEventListener("click",() => {
 
   if(envelope.classList.contains("opened"))
     return;
@@ -1618,12 +2030,6 @@ envelope.addEventListener("click", () => {
     window.innerHeight/2,
     9
   );
-
-  /*
-    Amplop dibuka lalu langsung berpindah
-    ke lembar surat. Tidak ada kertas
-    transparan yang keluar dari amplop.
-  */
 
   setTimeout(() => {
 
@@ -1643,9 +2049,9 @@ envelope.addEventListener("click", () => {
 });
 
 
-/* =================================================
+/* =====================================================
    ISI SURAT
-================================================= */
+===================================================== */
 
 const letterText = `sebenarnya belum hari anniv kita si ya. tapi aku pengen aja ngasi ke kamu ini sekarang, gapapa kan? heheh, ini alay banget si jujurly ..tapi gapapa. kapan lagi ngasi my pacar kesayangan aku ini surat² an digital kan haha.
 i don't really know how to start this but i have a lot of things i want you to know.
@@ -1665,9 +2071,9 @@ dan kalau aku buat salah lagi kamu bilang aja okeyy.. even if i might feel sad, 
 ihh panjang banget ya ternyataa hehe. thank youuu for reading all the way to the end, and sorry if this was a little cringe to read.`;
 
 
-/* =================================================
+/* =====================================================
    TYPING
-================================================= */
+===================================================== */
 
 function startTyping(){
 
@@ -1711,7 +2117,8 @@ function startTyping(){
       const cursor =
         body.querySelector(".cursor");
 
-      if(cursor) cursor.remove();
+      if(cursor)
+        cursor.remove();
 
       setTimeout(() => {
 
@@ -1740,9 +2147,9 @@ function startTyping(){
 }
 
 
-/* =================================================
-   NEXT → QUESTION
-================================================= */
+/* =====================================================
+   LETTER → QUESTION
+===================================================== */
 
 document
 .getElementById("nextButton")
@@ -1760,9 +2167,9 @@ document
 });
 
 
-/* =================================================
-   "MASIH" → SALAH
-================================================= */
+/* =====================================================
+   MASIH
+===================================================== */
 
 const still =
   document.getElementById("still");
@@ -1789,9 +2196,9 @@ still.addEventListener("click",() => {
 });
 
 
-/* =================================================
-   "SAYANG BANGET" → FINAL
-================================================= */
+/* =====================================================
+   SAYANG BANGET → FINAL
+===================================================== */
 
 document
 .getElementById("very")
@@ -1823,9 +2230,9 @@ document
 });
 
 
-/* =================================================
+/* =====================================================
    FINAL → WARNING
-================================================= */
+===================================================== */
 
 document
 .getElementById("finalNextButton")
@@ -1843,9 +2250,9 @@ document
 });
 
 
-/* =================================================
-   WARNING → NOTE
-================================================= */
+/* =====================================================
+   WARNING → REPLY PAGE
+===================================================== */
 
 warningScreen.addEventListener("click",() => {
 
@@ -1861,28 +2268,103 @@ warningScreen.addEventListener("click",() => {
 });
 
 
-/* =================================================
-   SEND
-   BELUM DIHUBUNGKAN KE FITUR BALASAN.
-   Nanti kita pasang setelah desain final.
-================================================= */
+/* =====================================================
+   SEND BUTTON
+===================================================== */
+
+const sendButton =
+  document.getElementById("sendButton");
+
+const replyText =
+  document.getElementById("replyText");
+
+const confirmOverlay =
+  document.getElementById("confirmOverlay");
+
+sendButton.addEventListener("click",() => {
+
+  /*
+    Jangan bisa lanjut kalau belum nulis.
+  */
+
+  if(replyText.value.trim() === ""){
+
+    replyText.focus();
+
+    replyText.animate(
+      [
+        {transform:"translateX(0)"},
+        {transform:"translateX(-5px)"},
+        {transform:"translateX(5px)"},
+        {transform:"translateX(0)"}
+      ],
+      {
+        duration:350
+      }
+    );
+
+    return;
+
+  }
+
+  confirmOverlay.classList.add("show");
+
+});
+
+
+/* =====================================================
+   BELUM SIH
+   → TUTUP NOTIF
+   → BALIK KE HALAMAN SEBELUMNYA
+===================================================== */
 
 document
-.getElementById("sendButton")
+.getElementById("notYet")
 .addEventListener("click",() => {
 
-  const button =
-    document.getElementById("sendButton");
+  confirmOverlay.classList.remove("show");
 
-  button.textContent = "soon ♡";
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
   setTimeout(() => {
 
-    button.textContent = "send";
+    replyText.focus();
 
-  },1600);
+  },300);
 
 });
+
+
+/* =====================================================
+   YAKIN
+   → SELESAI
+===================================================== */
+
+document
+.getElementById("yesSend")
+.addEventListener("click",() => {
+
+  confirmOverlay.classList.remove("show");
+
+  /*
+    Untuk sekarang hanya animasi.
+    Pengiriman ke email/backend akan
+    dipasang setelah desain final.
+  */
+
+  setTimeout(() => {
+
+    document
+      .getElementById("sentOverlay")
+      .classList.add("show");
+
+  },250);
+
+});
+
 
 </script>
 
