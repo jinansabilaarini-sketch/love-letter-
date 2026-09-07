@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>for sayangku<3!</title>
+
+<title>for sayangku&lt;3!</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
   box-sizing:border-box;
@@ -23,25 +28,25 @@ html{
 
 body{
   min-height:100vh;
-  background:
-    radial-gradient(circle at 10% 10%,#fffdfb 0,transparent 28%),
-    radial-gradient(circle at 90% 85%,#f2d9d3 0,transparent 32%),
-    #f8eee9;
+  overflow-x:hidden;
   color:#6d514c;
   font-family:"DM Sans",sans-serif;
-  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 15% 10%,#fff 0,transparent 30%),
+    radial-gradient(circle at 90% 90%,#f1d5cf 0,transparent 35%),
+    #f8eee9;
 }
 
 button,
+input,
 textarea{
   font-family:inherit;
-  -webkit-tap-highlight-color:transparent;
 }
 
 
-/* =====================================================
-   GENERAL
-===================================================== */
+/* =========================================================
+   SCREEN
+========================================================= */
 
 .screen{
   min-height:100vh;
@@ -52,9 +57,9 @@ textarea{
 }
 
 
-/* =====================================================
-   LOCK SCREEN
-===================================================== */
+/* =========================================================
+   LOCK
+========================================================= */
 
 #lockScreen{
   overflow:hidden;
@@ -106,8 +111,8 @@ textarea{
     0 12px 26px rgba(100,70,65,.14),
     inset 0 2px 5px rgba(255,255,255,.6);
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   z-index:2;
 }
 
@@ -126,7 +131,7 @@ textarea{
   border-bottom:0;
   border-radius:35px 35px 0 0;
   transform-origin:10px 60px;
-  transition:transform .75s cubic-bezier(.2,.8,.2,1);
+  transition:.75s cubic-bezier(.2,.8,.2,1);
   z-index:1;
 }
 
@@ -147,7 +152,6 @@ textarea{
   border-radius:11px;
   border:1px solid #e5cec8;
   background:rgba(255,255,255,.65);
-  box-shadow:0 4px 13px rgba(100,70,65,.06);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -176,42 +180,20 @@ textarea{
   color:#76534e;
   font-size:16px;
   cursor:pointer;
-  transition:.12s;
 }
 
 .key:active{
   transform:scale(.9);
-  background:#efd8d2;
-}
-
-.delete{
-  font-size:18px;
 }
 
 
-/* =====================================================
-   HEART EFFECT
-===================================================== */
-
-.heart{
-  position:fixed;
-  z-index:100;
-  pointer-events:none;
-  color:#d58b82;
-  animation:heartBurst 1.2s ease forwards;
-}
-
-
-/* =====================================================
+/* =========================================================
    ENVELOPE
-===================================================== */
+========================================================= */
 
 #envelopeScreen{
   display:none;
   text-align:center;
-  background:
-    radial-gradient(circle at 50% 15%,#fffdfb 0,transparent 35%),
-    #f8eee9;
 }
 
 .envelope-page{
@@ -243,8 +225,6 @@ textarea{
   background:#e9bbb3;
   border-radius:4px;
   box-shadow:0 17px 35px rgba(100,65,59,.14);
-  overflow:visible;
-  transition:transform .9s ease,opacity .8s ease;
 }
 
 .flap{
@@ -282,10 +262,9 @@ textarea{
   background:#bc746c;
   color:white;
   display:flex;
-  justify-content:center;
   align-items:center;
-  font-size:19px;
-  transition:opacity .25s,transform .5s ease;
+  justify-content:center;
+  transition:.4s;
 }
 
 .envelope-label{
@@ -312,7 +291,6 @@ textarea{
 
 .envelope-area.opened .seal{
   opacity:0;
-  transform:translateX(-50%) scale(.5);
 }
 
 .envelope-area.opened .envelope{
@@ -320,9 +298,9 @@ textarea{
 }
 
 
-/* =====================================================
+/* =========================================================
    LETTER
-===================================================== */
+========================================================= */
 
 #letterScreen{
   display:none;
@@ -335,11 +313,11 @@ textarea{
   margin:auto;
   padding:45px clamp(25px,7vw,58px) 42px;
   background:#fffaf4;
+  position:relative;
   border-radius:2px;
   box-shadow:
     0 16px 45px rgba(100,70,65,.12),
     0 2px 5px rgba(100,70,65,.05);
-  position:relative;
   animation:paperIn 1s ease;
 }
 
@@ -354,15 +332,12 @@ textarea{
 .greeting{
   font-family:"Caveat",cursive;
   font-size:34px;
-  font-weight:500;
   text-align:center;
   color:#875b55;
   margin-bottom:28px;
 }
 
 .letter-body{
-  width:100%;
-  text-align:left;
   white-space:pre-wrap;
   font-size:14px;
   line-height:1.9;
@@ -374,18 +349,15 @@ textarea{
   width:1px;
   height:16px;
   background:#b77b73;
-  vertical-align:-2px;
   animation:blink .8s infinite;
 }
 
 .signoff{
   opacity:0;
   margin-top:38px;
-  text-align:left;
   font-family:"Caveat",cursive;
   color:#875a54;
-  line-height:1.1;
-  transition:opacity 1s ease;
+  transition:opacity 1s;
 }
 
 .signoff.show{
@@ -402,9 +374,9 @@ textarea{
 }
 
 
-/* =====================================================
+/* =========================================================
    FLOWER
-===================================================== */
+========================================================= */
 
 .corner-flower{
   position:relative;
@@ -430,7 +402,6 @@ textarea{
   bottom:0;
   transform:rotate(-17deg);
   border-radius:10px;
-  transform-origin:bottom;
 }
 
 .flower-leaf{
@@ -456,14 +427,13 @@ textarea{
   top:4px;
   width:82px;
   height:82px;
-  transform:rotate(-8deg);
 }
 
 .big-petal{
   position:absolute;
   width:38px;
   height:48px;
-  border-radius:55% 55% 45% 45%;
+  border-radius:55%;
   background:linear-gradient(145deg,#f0c7bf,#d9958b);
   transform-origin:bottom center;
   left:22px;
@@ -483,20 +453,19 @@ textarea{
   background:#c87f75;
   left:30px;
   top:30px;
-  z-index:5;
 }
 
 
-/* =====================================================
-   NEXT BUTTON
-===================================================== */
+/* =========================================================
+   NEXT
+========================================================= */
 
 .next-wrap{
   opacity:0;
   pointer-events:none;
   text-align:right;
   margin-top:18px;
-  transition:opacity 1s ease;
+  transition:opacity 1s;
 }
 
 .next-wrap.show{
@@ -505,30 +474,20 @@ textarea{
 }
 
 .next-button{
-  border:none;
-  background:transparent;
-  color:#a56e66;
-  font-size:30px;
-  cursor:pointer;
-  width:58px;
-  height:58px;
-  position:relative;
-  transition:.25s ease;
-}
-
-.next-button::before{
-  content:"";
-  position:absolute;
-  inset:6px;
-  border:1px solid #d9aaa2;
+  width:54px;
+  height:54px;
   border-radius:50%;
-  background:rgba(255,255,255,.55);
-  box-shadow:0 5px 15px rgba(100,65,59,.08);
-  z-index:-1;
+  border:1px solid #d9aaa2;
+  background:rgba(255,255,255,.7);
+  color:#9d6962;
+  font-size:27px;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(100,65,59,.08);
+  transition:.25s;
 }
 
 .next-button:hover{
-  transform:translateX(5px);
+  transform:translateX(4px);
 }
 
 .next-button:active{
@@ -536,11 +495,10 @@ textarea{
 }
 
 
-/* =====================================================
+/* =========================================================
    QUESTION
-   — SATU BARIS
-   — BENAR-BENAR SEPERTI KOLOM PERTANYAAN
-===================================================== */
+   TIDAK ADA "ONE MORE THING"
+========================================================= */
 
 #questionScreen{
   display:none;
@@ -548,90 +506,73 @@ textarea{
   align-items:center;
   justify-content:center;
   padding:25px 18px;
-  text-align:center;
 }
 
 .question-box{
-  width:min(580px,100%);
-  animation:fadeIn .8s ease;
-}
-
-.question{
-  font-family:"DM Sans",sans-serif;
-  font-size:18px;
-  font-weight:500;
-  color:#644640;
-  margin-bottom:24px;
-}
-
-.question-card{
-  width:100%;
-  padding:18px 20px;
-  border:1px solid #dfc3bd;
-  border-radius:16px;
-  background:rgba(255,253,250,.82);
-  box-shadow:
-    0 8px 24px rgba(100,65,59,.08),
-    inset 0 1px 0 rgba(255,255,255,.8);
-}
-
-.question-input-line{
-  width:100%;
-  border:none;
-  outline:none;
-  background:transparent;
+  width:min(590px,100%);
   text-align:center;
-  color:#78544e;
-  font-family:"Caveat",cursive;
-  font-size:29px;
-  resize:none;
-  overflow:hidden;
-  min-height:42px;
+  animation:fadeIn .7s ease;
 }
 
-.question-input-line::placeholder{
-  color:#a98780;
+/*
+  INI BENAR-BENAR KOLom pertanyaan,
+  bukan judul biasa.
+*/
+
+.question-field{
+  width:100%;
+  min-height:74px;
+  padding:14px 20px;
+  border:1.5px solid #d9b8b1;
+  border-radius:18px;
+  background:rgba(255,252,249,.86);
+  box-shadow:
+    0 8px 25px rgba(100,65,59,.08),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:19px;
+}
+
+.question-text{
+  font-family:"Caveat",cursive;
+  font-size:31px;
+  font-weight:500;
+  color:#76514b;
 }
 
 .answers{
   display:flex;
   flex-direction:row;
   justify-content:center;
-  align-items:center;
   gap:12px;
-  margin-top:20px;
 }
 
 .answer{
   flex:1;
   max-width:190px;
-  min-height:52px;
-  border:1px solid #e2bbb4;
+  height:51px;
+  border:1px solid #dfbdb6;
   border-radius:15px;
-  background:#f1d5cf;
-  color:#714e49;
-  font-size:14px;
+  background:#f0d3cd;
+  color:#704d47;
+  font-size:13px;
   cursor:pointer;
-  box-shadow:0 6px 17px rgba(100,65,59,.09);
   transition:.2s;
 }
 
-.answer:hover{
-  transform:translateY(-2px);
-}
-
 .answer:active{
-  transform:scale(.96);
+  transform:scale(.95);
 }
 
 .tetot{
-  height:25px;
-  margin-top:18px;
+  height:24px;
+  margin-top:14px;
+  opacity:0;
   font-family:"Caveat",cursive;
   font-size:23px;
-  color:#c36e66;
-  opacity:0;
-  transition:.3s;
+  color:#bd665e;
 }
 
 .tetot.show{
@@ -639,250 +580,252 @@ textarea{
 }
 
 
-/* =====================================================
+/* =========================================================
    FINAL
-   — TANPA "HEHE I KNEW IT"
-===================================================== */
+   BESAR + BANYAK 💋 + MEMENUHI HALAMAN
+========================================================= */
 
 #finalScreen{
   display:none;
   min-height:100vh;
   align-items:center;
   justify-content:center;
-  text-align:center;
-  padding:25px;
   position:relative;
   overflow:hidden;
+  padding:20px;
 }
 
 .final-content{
-  width:min(460px,100%);
-  animation:finalPop 1s cubic-bezier(.2,.8,.2,1);
-}
-
-.final-card{
-  padding:48px 25px 34px;
-  border-radius:30px;
-  background:#fff7f3;
-  box-shadow:
-    0 20px 55px rgba(100,65,59,.14),
-    inset 0 0 0 1px rgba(190,130,120,.12);
+  width:min(500px,100%);
+  text-align:center;
+  position:relative;
+  z-index:2;
+  animation:finalIn .8s ease;
 }
 
 .final-text{
   font-family:"Caveat",cursive;
-  font-size:clamp(46px,13vw,72px);
-  line-height:.93;
+  font-size:clamp(53px,15vw,82px);
+  line-height:.88;
   font-weight:700;
-  color:#bd7169;
+  color:#b96760;
+  position:relative;
+  z-index:5;
 }
 
-.kiss-zone{
-  position:relative;
-  width:100%;
-  height:260px;
-  margin-top:10px;
-  overflow:visible;
+/*
+  💋 dibuat memenuhi layar.
+  Bukan 4 emoji kecil dalam kotak.
+*/
+
+.kiss-field{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:1;
 }
 
 .kiss{
   position:absolute;
   font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;
-  font-size:clamp(50px,15vw,82px);
+  font-size:clamp(48px,13vw,88px);
   opacity:0;
-  animation:naturalKiss 4.8s ease-in-out infinite;
-  filter:drop-shadow(0 5px 7px rgba(90,50,45,.08));
+  animation:kissFloat 6s ease-in-out infinite;
+  filter:drop-shadow(0 7px 9px rgba(80,45,40,.08));
 }
 
+/* posisi besar dan menyebar */
+
 .kiss:nth-child(1){
-  left:2%;
-  top:75px;
+  left:3%;
+  top:8%;
   animation-delay:0s;
 }
 
 .kiss:nth-child(2){
   left:25%;
-  top:5px;
-  animation-delay:1.1s;
+  top:2%;
+  animation-delay:1.2s;
 }
 
 .kiss:nth-child(3){
-  right:19%;
-  top:70px;
-  animation-delay:2.1s;
+  right:5%;
+  top:10%;
+  animation-delay:2.4s;
 }
 
 .kiss:nth-child(4){
-  right:-2%;
-  top:18px;
-  animation-delay:3.1s;
+  left:1%;
+  top:39%;
+  animation-delay:3.3s;
 }
 
 .kiss:nth-child(5){
-  left:10%;
-  bottom:5px;
-  animation-delay:1.7s;
+  right:1%;
+  top:35%;
+  animation-delay:.7s;
 }
 
 .kiss:nth-child(6){
-  right:7%;
-  bottom:-3px;
-  animation-delay:3.8s;
+  left:13%;
+  bottom:11%;
+  animation-delay:2s;
 }
 
 .kiss:nth-child(7){
+  right:15%;
+  bottom:8%;
+  animation-delay:3.8s;
+}
+
+.kiss:nth-child(8){
   left:43%;
-  top:95px;
-  animation-delay:2.7s;
+  bottom:2%;
+  animation-delay:4.7s;
+}
+
+.kiss:nth-child(9){
+  right:37%;
+  top:20%;
+  animation-delay:1.8s;
+}
+
+.kiss:nth-child(10){
+  left:4%;
+  bottom:35%;
+  animation-delay:4s;
+}
+
+.kiss:nth-child(11){
+  right:5%;
+  bottom:30%;
+  animation-delay:2.8s;
+}
+
+.kiss:nth-child(12){
+  left:30%;
+  bottom:28%;
+  animation-delay:5s;
 }
 
 .final-next{
-  margin-top:-4px;
+  margin-top:45px;
 }
 
 
-/* =====================================================
-   WARNING
-   — LEBIH HEBOH
-===================================================== */
+/* =========================================================
+   ATTENTION
+   LEBIH HEBOH
+========================================================= */
 
 #warningScreen{
   display:none;
   min-height:100vh;
   align-items:center;
   justify-content:center;
-  padding:25px;
-  text-align:center;
   position:relative;
   overflow:hidden;
+  padding:25px;
   background:
-    radial-gradient(circle at 50% 50%,#fff3ed 0,#f6ddd7 42%,#efd0c9 100%);
+    radial-gradient(circle at center,#fff7f3 0,#f5d6d0 45%,#e9bdb5 100%);
 }
 
-.warning-box{
-  width:min(470px,100%);
-  position:relative;
-  animation:fadeIn .8s ease;
-}
+/*
+  background symbols memenuhi layar
+*/
 
-.warning-bg-symbol{
+.warning-symbol{
   position:absolute;
-  font-size:clamp(45px,14vw,78px);
-  opacity:.18;
-  animation:warningPop 1.3s infinite ease-in-out;
-  z-index:1;
+  font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+  font-size:clamp(55px,16vw,105px);
+  opacity:0;
+  animation:warningExplosion 2.5s ease-in-out infinite;
+  pointer-events:none;
 }
 
-.warning-bg-symbol:nth-child(1){
-  left:-15px;
-  top:-55px;
-  animation-delay:0s;
-}
-
-.warning-bg-symbol:nth-child(2){
-  right:-8px;
-  top:-30px;
-  animation-delay:.25s;
-}
-
-.warning-bg-symbol:nth-child(3){
-  left:-30px;
-  bottom:-60px;
-  animation-delay:.55s;
-}
-
-.warning-bg-symbol:nth-child(4){
-  right:-20px;
-  bottom:-45px;
-  animation-delay:.85s;
-}
-
-.warning-bg-symbol:nth-child(5){
-  left:35%;
-  top:-75px;
-  animation-delay:.4s;
-}
-
-.warning-bg-symbol:nth-child(6){
-  left:42%;
-  bottom:-70px;
-  animation-delay:1s;
-}
+.warning-symbol:nth-child(1){left:2%;top:3%;animation-delay:0s}
+.warning-symbol:nth-child(2){right:1%;top:5%;animation-delay:.3s}
+.warning-symbol:nth-child(3){left:18%;top:22%;animation-delay:.7s}
+.warning-symbol:nth-child(4){right:18%;top:27%;animation-delay:1.1s}
+.warning-symbol:nth-child(5){left:0%;bottom:5%;animation-delay:.5s}
+.warning-symbol:nth-child(6){right:2%;bottom:3%;animation-delay:1.5s}
+.warning-symbol:nth-child(7){left:36%;top:3%;animation-delay:1.8s}
+.warning-symbol:nth-child(8){left:39%;bottom:2%;animation-delay:2.1s}
+.warning-symbol:nth-child(9){right:28%;top:45%;animation-delay:.9s}
+.warning-symbol:nth-child(10){left:5%;top:57%;animation-delay:1.4s}
 
 .warning-card{
+  width:min(480px,100%);
   position:relative;
-  z-index:2;
+  z-index:10;
+  text-align:center;
   padding:42px 25px;
   border-radius:30px;
-  background:
-    repeating-linear-gradient(
-      135deg,
-      rgba(255,255,255,.15) 0,
-      rgba(255,255,255,.15) 7px,
-      transparent 7px,
-      transparent 14px
-    ),
-    #fff5f0;
-  border:2px solid rgba(190,90,80,.22);
+  background:#fff7f3;
+  border:2px solid rgba(185,82,72,.25);
   box-shadow:
-    0 20px 60px rgba(100,55,50,.17),
-    0 0 0 8px rgba(255,255,255,.2);
+    0 20px 65px rgba(90,45,40,.18),
+    0 0 0 10px rgba(255,255,255,.22);
+  cursor:pointer;
+  animation:warningCardIn .7s ease;
 }
 
 .warning-title{
   font-family:"Caveat",cursive;
-  font-size:29px;
-  color:#b6534b;
-  margin-bottom:19px;
+  font-size:31px;
+  font-weight:700;
+  color:#b54e47;
+  margin-bottom:20px;
 }
 
 .warning-text{
   font-family:"Caveat",cursive;
   font-size:27px;
-  line-height:1.2;
-  font-weight:600;
-  color:#704844;
+  line-height:1.23;
+  color:#704742;
 }
 
 .warning-text strong{
-  color:#bd5149;
+  color:#b94d46;
 }
 
 .warning-tap{
-  margin-top:27px;
-  font-size:11px;
-  letter-spacing:1px;
+  margin-top:28px;
+  font-size:10px;
+  letter-spacing:1.7px;
+  color:#a4665f;
   text-transform:uppercase;
-  color:#a45e57;
-  animation:softPulse 1.2s infinite;
 }
 
 
-/* =====================================================
-   NOTE / REPLY PAGE
-===================================================== */
+/* =========================================================
+   REPLY PAGE
+========================================================= */
 
 #noteScreen{
   display:none;
   min-height:100vh;
+  padding:35px 18px 55px;
   align-items:center;
   justify-content:center;
-  padding:30px 20px 55px;
 }
 
 .note-stage{
-  width:min(500px,100%);
+  width:min(520px,100%);
   animation:fadeIn .8s ease;
 }
 
 
-/* Bubble pertanyaan */
+/* =========================================================
+   IPHONE BUBBLE
+========================================================= */
 
-.bubble-question-wrap{
+.bubble-wrap{
   position:relative;
-  margin:0 auto 22px 5px;
   width:max-content;
-  max-width:91%;
+  max-width:88%;
+  margin:0 auto 24px 5px;
 }
 
 .iphone-bubble{
@@ -892,42 +835,51 @@ textarea{
   padding:12px 17px;
   border-radius:20px 20px 20px 6px;
   background:#e9e9eb;
-  color:#252525;
+  color:#222;
   font-size:13px;
   line-height:1.4;
-  box-shadow:0 4px 12px rgba(0,0,0,.07);
-  animation:bubbleIn .8s ease;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.iphone-bubble::after{
+  content:"";
+  position:absolute;
+  left:-6px;
+  bottom:0;
+  width:13px;
+  height:13px;
+  background:#e9e9eb;
+  clip-path:polygon(100% 0,100% 100%,0 100%);
 }
 
 
 /*
-  Tanda ?! SETENGAH di dalam,
-  SETENGAH di luar bubble.
+  ?! SETENGAH DALAM
+  SETENGAH LUAR
 */
 
-.bubble-question-mark{
+.bubble-mark{
   position:absolute;
-  right:-17px;
-  top:-13px;
-  font-family:"Caveat",cursive;
-  font-size:31px;
-  font-weight:700;
-  color:#a96058;
-  transform:rotate(10deg);
+  right:-18px;
+  top:-15px;
   z-index:4;
-  text-shadow:0 2px 3px rgba(100,60,55,.08);
+  font-family:"Caveat",cursive;
+  font-size:34px;
+  font-weight:700;
+  color:#a85e56;
+  transform:rotate(9deg);
 }
 
 
-/* =====================================================
+/* =========================================================
    KERTAS BALASAN
-===================================================== */
+========================================================= */
 
 .reply-paper{
-  position:relative;
   width:100%;
   min-height:390px;
-  padding:40px 30px 105px;
+  position:relative;
+  padding:38px 29px 30px;
   background:
     repeating-linear-gradient(
       to bottom,
@@ -940,7 +892,7 @@ textarea{
   box-shadow:
     0 18px 50px rgba(100,65,59,.15),
     0 2px 5px rgba(100,65,59,.06);
-  transform:rotate(-.4deg);
+  transform:rotate(-.35deg);
 }
 
 .reply-paper::before{
@@ -953,23 +905,14 @@ textarea{
   background:rgba(210,125,117,.18);
 }
 
-.note-tape{
+.paper-tape{
   position:absolute;
-  width:95px;
-  height:25px;
-  background:rgba(232,199,190,.7);
-  top:-11px;
+  width:90px;
+  height:23px;
+  top:-10px;
   left:50%;
   transform:translateX(-50%) rotate(1deg);
-}
-
-.reply-label{
-  position:relative;
-  z-index:2;
-  font-family:"Caveat",cursive;
-  font-size:24px;
-  color:#a87972;
-  margin-bottom:16px;
+  background:rgba(230,195,186,.7);
 }
 
 .reply-textarea{
@@ -977,77 +920,90 @@ textarea{
   z-index:2;
   display:block;
   width:100%;
-  min-height:235px;
+  min-height:315px;
   resize:none;
-  border:none;
   outline:none;
+  border:none;
   background:transparent;
   color:#654640;
   font-family:"Caveat",cursive;
-  font-size:22px;
-  line-height:1.55;
+  font-size:23px;
+  line-height:1.5;
   padding:3px 0;
 }
 
 .reply-textarea::placeholder{
-  color:#b79a94;
+  color:#b69a94;
 }
 
 
-/* =====================================================
+/* =========================================================
    SEND TO MY GF
-   — DI LUAR DAN DI BAWAH KERTAS
-===================================================== */
+   BENAR-BENAR DI BAWAH & DI LUAR KERTAS
+========================================================= */
 
 .send-section{
-  margin-top:24px;
+  position:relative;
+  z-index:10;
   text-align:center;
+  margin-top:28px;
 }
 
 .send-title{
   font-family:"DM Sans",sans-serif;
-  font-size:14px;
+  font-size:12px;
   font-weight:700;
-  letter-spacing:1.3px;
-  color:#75514b;
+  letter-spacing:1.8px;
+  color:#79534d;
   margin-bottom:10px;
 }
 
+
+/*
+  SATU BUBBLE.
+  SEND + PANAH menyatu.
+*/
+
 .send-button{
-  border:none;
-  min-width:138px;
-  padding:13px 20px;
-  border-radius:18px;
-  background:#e8b8b0;
-  color:#68443f;
-  font-weight:600;
-  font-size:14px;
-  cursor:pointer;
-  box-shadow:0 7px 18px rgba(100,65,59,.12);
-  transition:.2s ease;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
+  gap:12px;
+  min-width:135px;
+  height:48px;
+  padding:0 20px;
+  border:none;
+  border-radius:24px;
+  background:#dfaaa1;
+  color:#633f3a;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:
+    0 7px 18px rgba(100,65,59,.12),
+    inset 0 1px 0 rgba(255,255,255,.4);
+  transition:.2s;
 }
 
-.send-button span{
-  font-size:18px;
-  line-height:1;
-}
-
-.send-button:hover{
-  transform:translateY(-2px);
+.send-button .send-arrow{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.35);
+  font-size:15px;
 }
 
 .send-button:active{
-  transform:scale(.95);
+  transform:scale(.94);
 }
 
 
-/* =====================================================
-   CONFIRMATION MODAL
-===================================================== */
+/* =========================================================
+   CONFIRMATION
+========================================================= */
 
 .confirm-overlay{
   position:fixed;
@@ -1057,8 +1013,8 @@ textarea{
   align-items:center;
   justify-content:center;
   padding:22px;
-  background:rgba(80,55,50,.24);
-  backdrop-filter:blur(7px);
+  background:rgba(65,43,40,.25);
+  backdrop-filter:blur(9px);
 }
 
 .confirm-overlay.show{
@@ -1066,13 +1022,13 @@ textarea{
 }
 
 .confirm-box{
-  width:min(370px,100%);
-  padding:31px 24px 24px;
+  width:min(380px,100%);
+  padding:30px 23px 23px;
   border-radius:25px;
   background:#fffaf6;
-  box-shadow:0 25px 70px rgba(60,40,35,.2);
+  box-shadow:0 25px 70px rgba(60,40,35,.22);
   text-align:center;
-  animation:modalIn .35s cubic-bezier(.2,.8,.2,1);
+  animation:modalIn .35s ease;
 }
 
 .confirm-question{
@@ -1092,20 +1048,19 @@ textarea{
   flex:1;
   min-height:48px;
   border-radius:15px;
-  border:1px solid #e3c4bd;
+  border:1px solid #e2c4bd;
   cursor:pointer;
   font-size:13px;
-  transition:.2s;
 }
 
 .not-yet{
-  background:#f7ebe7;
+  background:#f6ebe7;
   color:#76524c;
 }
 
 .yes-send{
-  background:#e5b0a7;
-  color:#65413c;
+  background:#e3afa7;
+  color:#633f3a;
 }
 
 .confirm-btn:active{
@@ -1113,20 +1068,20 @@ textarea{
 }
 
 
-/* =====================================================
+/* =========================================================
    SENT
-===================================================== */
+========================================================= */
 
 .sent-overlay{
   position:fixed;
   inset:0;
-  z-index:600;
+  z-index:700;
   display:none;
   align-items:center;
   justify-content:center;
   padding:25px;
   background:
-    radial-gradient(circle at center,#fffaf7 0,#f5ddd7 65%,#efd0c9 100%);
+    radial-gradient(circle at center,#fffdfb 0,#f6dfda 60%,#edc9c2 100%);
   text-align:center;
 }
 
@@ -1136,10 +1091,10 @@ textarea{
 
 .sent-message{
   font-family:"Caveat",cursive;
-  font-size:42px;
+  font-size:44px;
   line-height:1.05;
-  color:#a95e56;
-  animation:sentIn .8s cubic-bezier(.2,.8,.2,1);
+  color:#a85d55;
+  animation:sentIn .75s cubic-bezier(.2,.8,.2,1);
 }
 
 .sent-check{
@@ -1150,15 +1105,16 @@ textarea{
 }
 
 
-/* =====================================================
+/* =========================================================
    ANIMATIONS
-===================================================== */
+========================================================= */
 
 @keyframes fadeIn{
   from{
     opacity:0;
-    transform:translateY(14px);
+    transform:translateY(15px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
@@ -1170,6 +1126,7 @@ textarea{
     opacity:0;
     transform:translateY(35px) scale(.97);
   }
+
   to{
     opacity:1;
     transform:translateY(0) scale(1);
@@ -1181,10 +1138,12 @@ textarea{
     transform:scale(1);
     opacity:1;
   }
+
   70%{
     transform:scale(1.04);
-    opacity:.85;
+    opacity:.8;
   }
+
   100%{
     transform:scale(.94);
     opacity:0;
@@ -1197,53 +1156,13 @@ textarea{
   }
 }
 
-@keyframes heartBurst{
-  0%{
-    opacity:1;
-    transform:translate(0,0) scale(.5);
-  }
-  100%{
+@keyframes finalIn{
+  from{
     opacity:0;
-    transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1);
+    transform:scale(.82);
   }
-}
 
-@keyframes shake{
-  25%{
-    transform:translateX(-6px);
-  }
-  75%{
-    transform:translateX(6px);
-  }
-}
-
-@keyframes wrongShake{
-  0%,100%{
-    transform:translateX(0);
-  }
-  20%{
-    transform:translateX(-9px);
-  }
-  40%{
-    transform:translateX(9px);
-  }
-  60%{
-    transform:translateX(-7px);
-  }
-  80%{
-    transform:translateX(7px);
-  }
-}
-
-@keyframes finalPop{
-  0%{
-    opacity:0;
-    transform:scale(.65);
-  }
-  70%{
-    transform:scale(1.05);
-  }
-  100%{
+  to{
     opacity:1;
     transform:scale(1);
   }
@@ -1251,73 +1170,97 @@ textarea{
 
 
 /*
-  💋 sekarang ukurannya besar,
-  menyebar memenuhi area,
-  gerakannya lambat dan tidak meletup
-  secara kecil-kecil.
+  NATURAL KISS
+  Tidak muncul sekaligus.
+  Bergerak perlahan dan fade.
 */
 
-@keyframes naturalKiss{
+@keyframes kissFloat{
+
   0%{
     opacity:0;
-    transform:translateY(25px) scale(.75) rotate(-12deg);
+    transform:
+      translate3d(0,35px,0)
+      scale(.72)
+      rotate(-10deg);
   }
 
-  15%{
-    opacity:.95;
+  18%{
+    opacity:.9;
   }
 
   45%{
     opacity:1;
-    transform:translateY(-8px) scale(1) rotate(7deg);
+    transform:
+      translate3d(10px,-10px,0)
+      scale(1)
+      rotate(8deg);
   }
 
-  70%{
-    opacity:.9;
-    transform:translateY(-28px) scale(1.06) rotate(-5deg);
+  72%{
+    opacity:.8;
+    transform:
+      translate3d(-10px,-35px,0)
+      scale(1.04)
+      rotate(-7deg);
   }
 
   100%{
     opacity:0;
-    transform:translateY(-60px) scale(.92) rotate(9deg);
+    transform:
+      translate3d(12px,-75px,0)
+      scale(.9)
+      rotate(10deg);
   }
+
 }
 
-@keyframes warningPop{
-  0%,100%{
-    transform:scale(.65) rotate(-10deg);
-    opacity:.12;
+
+@keyframes warningExplosion{
+
+  0%{
+    opacity:0;
+    transform:scale(.45) rotate(-15deg);
+  }
+
+  25%{
+    opacity:.2;
+    transform:scale(1.1) rotate(8deg);
   }
 
   50%{
-    transform:scale(1.3) rotate(9deg);
-    opacity:.35;
+    opacity:.34;
+    transform:scale(1.28) rotate(-5deg);
   }
+
+  75%{
+    opacity:.16;
+    transform:scale(.95) rotate(7deg);
+  }
+
+  100%{
+    opacity:0;
+    transform:scale(.55) rotate(-12deg);
+  }
+
 }
 
-@keyframes softPulse{
-  0%,100%{
-    opacity:.45;
-  }
+@keyframes warningCardIn{
 
-  50%{
-    opacity:1;
-  }
-}
-
-@keyframes bubbleIn{
   from{
     opacity:0;
-    transform:translateY(12px) scale(.92);
+    transform:scale(.88);
   }
 
   to{
     opacity:1;
-    transform:translateY(0) scale(1);
+    transform:scale(1);
   }
+
 }
 
 @keyframes modalIn{
+
   from{
     opacity:0;
     transform:scale(.9) translateY(12px);
@@ -1327,15 +1270,17 @@ textarea{
     opacity:1;
     transform:scale(1) translateY(0);
   }
+
 }
 
 @keyframes sentIn{
+
   0%{
     opacity:0;
-    transform:scale(.7);
+    transform:scale(.65);
   }
 
-  65%{
+  70%{
     transform:scale(1.06);
   }
 
@@ -1343,8 +1288,13 @@ textarea{
     opacity:1;
     transform:scale(1);
   }
+
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:480px){
 
@@ -1362,29 +1312,24 @@ textarea{
     padding-right:24px;
   }
 
-  .corner-flower{
-    transform:translateX(20px) scale(.9);
-    transform-origin:right bottom;
+  .question-text{
+    font-size:27px;
+  }
+
+  .answers{
+    gap:8px;
+  }
+
+  .answer{
+    font-size:12px;
+  }
+
+  .warning-card{
+    padding:38px 20px;
   }
 
   .warning-text{
     font-size:25px;
-  }
-
-  .warning-card{
-    padding:38px 21px;
-  }
-
-  .answers{
-    gap:9px;
-  }
-
-  .answer{
-    font-size:13px;
-  }
-
-  .question-input-line{
-    font-size:26px;
   }
 
   .reply-paper{
@@ -1393,7 +1338,15 @@ textarea{
   }
 
   .reply-textarea{
-    font-size:20px;
+    font-size:21px;
+  }
+
+  .send-title{
+    font-size:11px;
+  }
+
+  .confirm-question{
+    font-size:26px;
   }
 
 }
@@ -1405,9 +1358,9 @@ textarea{
 <body>
 
 
-<!-- =====================================================
-     LOCK
-===================================================== -->
+<!-- =========================================================
+     LOCK SCREEN
+========================================================= -->
 
 <section id="lockScreen" class="screen">
 
@@ -1462,9 +1415,7 @@ textarea{
 
       <button class="key" data-number="0">0</button>
 
-      <button class="key delete" id="delete">
-        ⌫
-      </button>
+      <button class="key" id="delete">⌫</button>
 
     </div>
 
@@ -1473,9 +1424,9 @@ textarea{
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      ENVELOPE
-===================================================== -->
+========================================================= -->
 
 <section id="envelopeScreen" class="screen">
 
@@ -1514,9 +1465,9 @@ textarea{
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      LETTER
-===================================================== -->
+========================================================= -->
 
 <section id="letterScreen">
 
@@ -1540,12 +1491,12 @@ textarea{
 
     </div>
 
-
     <div class="corner-flower" id="cornerFlower">
 
       <div class="flower-stem"></div>
 
       <div class="flower-leaf"></div>
+
       <div class="flower-leaf second"></div>
 
       <div class="big-flower">
@@ -1562,7 +1513,6 @@ textarea{
 
     </div>
 
-
     <div class="next-wrap" id="nextWrap">
 
       <button class="next-button" id="nextButton">
@@ -1576,28 +1526,26 @@ textarea{
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      QUESTION
-===================================================== -->
+========================================================= -->
 
 <section id="questionScreen">
 
   <div class="question-box">
 
-    <div class="question">
-      kamu sayang aku ga?
-    </div>
+    <!-- INI SEKARANG BENAR-BENAR KOTAK PERTANYAAN -->
 
-    <div class="question-card">
+    <div class="question-field">
 
-      <input
-        class="question-input-line"
-        type="text"
-        placeholder="jawab jujur..."
-        autocomplete="off"
-      >
+      <div class="question-text">
+        kamu sayang aku ga?
+      </div>
 
     </div>
+
+
+    <!-- DUA PILIHAN SATU BARIS -->
 
     <div class="answers">
 
@@ -1620,42 +1568,51 @@ textarea{
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      FINAL
-===================================================== -->
+========================================================= -->
 
 <section id="finalScreen">
 
+  <!-- 💋 MEMENUHI HALAMAN -->
+
+  <div class="kiss-field">
+
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+    <span class="kiss">💋</span>
+
+  </div>
+
+
   <div class="final-content">
 
-    <div class="final-card">
+    <div class="final-text">
+      YEAYYY,<br>
+      I LOVE YOU<br>
+      SAYANGKUUUU
+    </div>
 
-      <div class="final-text">
-        YEAYYY,<br>
-        I LOVE YOU<br>
-        SAYANGKUUUU
-      </div>
+    <div
+      class="next-wrap final-next"
+      id="finalNextWrap"
+    >
 
-      <div class="kiss-zone">
-
-        <span class="kiss">💋</span>
-        <span class="kiss">💋</span>
-        <span class="kiss">💋</span>
-        <span class="kiss">💋</span>
-        <span class="kiss">💋</span>
-        <span class="kiss">💋</span>
-        <span class="kiss">💋</span>
-
-      </div>
-
-
-      <div class="next-wrap final-next" id="finalNextWrap">
-
-        <button class="next-button" id="finalNextButton">
-          →
-        </button>
-
-      </div>
+      <button
+        class="next-button"
+        id="finalNextButton"
+      >
+        →
+      </button>
 
     </div>
 
@@ -1664,38 +1621,40 @@ textarea{
 </section>
 
 
-<!-- =====================================================
-     WARNING
-===================================================== -->
+<!-- =========================================================
+     ATTENTION
+========================================================= -->
 
 <section id="warningScreen">
 
-  <div class="warning-box">
+  <!-- background HEBOH -->
 
-    <div class="warning-bg-symbol">⚠️</div>
-    <div class="warning-bg-symbol">⛔️</div>
-    <div class="warning-bg-symbol">⁉️</div>
-    <div class="warning-bg-symbol">⚠️</div>
-    <div class="warning-bg-symbol">⛔️</div>
-    <div class="warning-bg-symbol">⁉️</div>
+  <div class="warning-symbol">⚠️</div>
+  <div class="warning-symbol">⛔️</div>
+  <div class="warning-symbol">⁉️</div>
+  <div class="warning-symbol">⚠️</div>
+  <div class="warning-symbol">⛔️</div>
+  <div class="warning-symbol">⁉️</div>
+  <div class="warning-symbol">⚠️</div>
+  <div class="warning-symbol">⛔️</div>
+  <div class="warning-symbol">⁉️</div>
+  <div class="warning-symbol">⚠️</div>
 
 
-    <div class="warning-card">
+  <div class="warning-card">
 
-      <div class="warning-title">
-        ⚠️ ATTENTION PLEASE ⚠️
-      </div>
+    <div class="warning-title">
+      ⚠️ ATTENTION PLEASE ⚠️
+    </div>
 
-      <div class="warning-text">
-        karna respon kamu terhadap love letter aku
-        tidak sesemangat aku ketika buatin kamu ini,
-        <strong>kamu harus balesin surat aku. TITIK 😤</strong>
-      </div>
+    <div class="warning-text">
+      karna respon kamu terhadap love letter aku
+      tidak sesemangat aku ketika buatin kamu ini,
+      <strong>kamu harus balesin surat aku. TITIK 😤</strong>
+    </div>
 
-      <div class="warning-tap">
-        tap to continue
-      </div>
-
+    <div class="warning-tap">
+      tap anywhere to continue
     </div>
 
   </div>
@@ -1703,44 +1662,42 @@ textarea{
 </section>
 
 
-<!-- =====================================================
-     NOTE / REPLY
-===================================================== -->
+<!-- =========================================================
+     REPLY PAGE
+========================================================= -->
 
 <section id="noteScreen">
 
   <div class="note-stage">
 
 
-    <!-- CHAT BUBBLE -->
+    <!-- IPHONE CHAT -->
 
-    <div class="bubble-question-wrap">
+    <div class="bubble-wrap">
 
       <div class="iphone-bubble">
         aku mau liat sebenarnya kamu tu cinta ga si sama aku
       </div>
 
-      <div class="bubble-question-mark">
+      <!-- ?! setengah dalam setengah luar -->
+
+      <div class="bubble-mark">
         ?!
       </div>
 
     </div>
 
 
-    <!-- KERTAS UNTUK MENULIS -->
+    <!-- KERTAS -->
 
     <div class="reply-paper">
 
-      <div class="note-tape"></div>
-
-      <div class="reply-label">
-        write your answer here...
-      </div>
+      <div class="paper-tape"></div>
 
       <textarea
         id="replyText"
         class="reply-textarea"
-        placeholder="tulis jawaban kamu..."
+        placeholder="tulis jawaban kamu di sini..."
         maxlength="2000"
       ></textarea>
 
@@ -1756,12 +1713,17 @@ textarea{
       </div>
 
       <button
+        type="button"
         class="send-button"
         id="sendButton"
-        type="button"
       >
-        send
-        <span>↗</span>
+
+        <span>send</span>
+
+        <span class="send-arrow">
+          ↗
+        </span>
+
       </button>
 
     </div>
@@ -1771,9 +1733,9 @@ textarea{
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      CONFIRMATION
-===================================================== -->
+========================================================= -->
 
 <div
   class="confirm-overlay"
@@ -1809,9 +1771,9 @@ textarea{
 </div>
 
 
-<!-- =====================================================
+<!-- =========================================================
      SENT
-===================================================== -->
+========================================================= -->
 
 <div
   class="sent-overlay"
@@ -1821,6 +1783,7 @@ textarea{
   <div class="sent-message">
 
     balasan sudah dikirim
+
     <span class="sent-check">
       ✅️
     </span>
@@ -1833,9 +1796,9 @@ textarea{
 <script>
 
 
-/* =====================================================
+/* =========================================================
    PIN
-===================================================== */
+========================================================= */
 
 const correctPIN = "0311";
 
@@ -1878,8 +1841,7 @@ document
     if(enteredPIN.length >= 4)
       return;
 
-    enteredPIN +=
-      button.dataset.number;
+    enteredPIN += button.dataset.number;
 
     updatePIN();
 
@@ -1891,17 +1853,25 @@ document
 
       }else{
 
-        lock.classList.add("shake");
+        lock.animate(
+          [
+            {transform:"translateX(0)"},
+            {transform:"translateX(-8px)"},
+            {transform:"translateX(8px)"},
+            {transform:"translateX(0)"}
+          ],
+          {
+            duration:400
+          }
+        );
 
         setTimeout(() => {
-
-          lock.classList.remove("shake");
 
           enteredPIN = "";
 
           updatePIN();
 
-        },450);
+        },400);
 
       }
 
@@ -1938,19 +1908,13 @@ function updatePIN(){
 }
 
 
-/* =====================================================
+/* =========================================================
    UNLOCK
-===================================================== */
+========================================================= */
 
 function unlock(){
 
   lock.classList.add("open");
-
-  createHearts(
-    window.innerWidth/2,
-    window.innerHeight/2-30,
-    12
-  );
 
   setTimeout(() => {
 
@@ -1958,62 +1922,14 @@ function unlock(){
 
     envelopeScreen.style.display = "flex";
 
-  },1200);
+  },1000);
 
 }
 
 
-/* =====================================================
-   HEARTS
-===================================================== */
-
-function createHearts(x,y,count){
-
-  for(let i=0;i<count;i++){
-
-    const h =
-      document.createElement("div");
-
-    h.className = "heart";
-
-    h.textContent = "♥";
-
-    h.style.left = x+"px";
-    h.style.top = y+"px";
-
-    h.style.setProperty(
-      "--x",
-      (Math.random()*240-120)+"px"
-    );
-
-    h.style.setProperty(
-      "--y",
-      (Math.random()*220-110)+"px"
-    );
-
-    h.style.setProperty(
-      "--r",
-      (Math.random()*80-40)+"deg"
-    );
-
-    h.style.fontSize =
-      (10+Math.random()*9)+"px";
-
-    document.body.appendChild(h);
-
-    setTimeout(
-      () => h.remove(),
-      1300
-    );
-
-  }
-
-}
-
-
-/* =====================================================
+/* =========================================================
    ENVELOPE
-===================================================== */
+========================================================= */
 
 const envelope =
   document.getElementById("envelope");
@@ -2025,22 +1941,13 @@ envelope.addEventListener("click",() => {
 
   envelope.classList.add("opened");
 
-  createHearts(
-    window.innerWidth/2,
-    window.innerHeight/2,
-    9
-  );
-
   setTimeout(() => {
 
     envelopeScreen.style.display = "none";
 
     letterScreen.style.display = "block";
 
-    window.scrollTo({
-      top:0,
-      behavior:"instant"
-    });
+    window.scrollTo(0,0);
 
     startTyping();
 
@@ -2049,9 +1956,9 @@ envelope.addEventListener("click",() => {
 });
 
 
-/* =====================================================
-   ISI SURAT
-===================================================== */
+/* =========================================================
+   LETTER TEXT
+========================================================= */
 
 const letterText = `sebenarnya belum hari anniv kita si ya. tapi aku pengen aja ngasi ke kamu ini sekarang, gapapa kan? heheh, ini alay banget si jujurly ..tapi gapapa. kapan lagi ngasi my pacar kesayangan aku ini surat² an digital kan haha.
 i don't really know how to start this but i have a lot of things i want you to know.
@@ -2071,9 +1978,9 @@ dan kalau aku buat salah lagi kamu bilang aja okeyy.. even if i might feel sad, 
 ihh panjang banget ya ternyataa hehe. thank youuu for reading all the way to the end, and sorry if this was a little cringe to read.`;
 
 
-/* =====================================================
+/* =========================================================
    TYPING
-===================================================== */
+========================================================= */
 
 function startTyping(){
 
@@ -2147,9 +2054,9 @@ function startTyping(){
 }
 
 
-/* =====================================================
+/* =========================================================
    LETTER → QUESTION
-===================================================== */
+========================================================= */
 
 document
 .getElementById("nextButton")
@@ -2159,17 +2066,14 @@ document
 
   questionScreen.style.display = "flex";
 
-  window.scrollTo({
-    top:0,
-    behavior:"instant"
-  });
+  window.scrollTo(0,0);
 
 });
 
 
-/* =====================================================
+/* =========================================================
    MASIH
-===================================================== */
+========================================================= */
 
 const still =
   document.getElementById("still");
@@ -2179,11 +2083,18 @@ const tetot =
 
 still.addEventListener("click",() => {
 
-  still.classList.remove("wrong");
-
-  void still.offsetWidth;
-
-  still.classList.add("wrong");
+  still.animate(
+    [
+      {transform:"translateX(0)"},
+      {transform:"translateX(-8px)"},
+      {transform:"translateX(8px)"},
+      {transform:"translateX(-5px)"},
+      {transform:"translateX(0)"}
+    ],
+    {
+      duration:420
+    }
+  );
 
   tetot.classList.add("show");
 
@@ -2191,14 +2102,14 @@ still.addEventListener("click",() => {
 
     tetot.classList.remove("show");
 
-  },1800);
+  },1600);
 
 });
 
 
-/* =====================================================
+/* =========================================================
    SAYANG BANGET → FINAL
-===================================================== */
+========================================================= */
 
 document
 .getElementById("very")
@@ -2208,16 +2119,7 @@ document
 
   finalScreen.style.display = "flex";
 
-  window.scrollTo({
-    top:0,
-    behavior:"instant"
-  });
-
-  createHearts(
-    window.innerWidth/2,
-    window.innerHeight/2,
-    18
-  );
+  window.scrollTo(0,0);
 
   setTimeout(() => {
 
@@ -2225,14 +2127,14 @@ document
       .getElementById("finalNextWrap")
       .classList.add("show");
 
-  },1800);
+  },2200);
 
 });
 
 
-/* =====================================================
-   FINAL → WARNING
-===================================================== */
+/* =========================================================
+   FINAL → ATTENTION
+========================================================= */
 
 document
 .getElementById("finalNextButton")
@@ -2242,49 +2144,44 @@ document
 
   warningScreen.style.display = "flex";
 
-  window.scrollTo({
-    top:0,
-    behavior:"instant"
-  });
+  window.scrollTo(0,0);
 
 });
 
 
-/* =====================================================
-   WARNING → REPLY PAGE
-===================================================== */
+/* =========================================================
+   ATTENTION → REPLY
+========================================================= */
 
 warningScreen.addEventListener("click",() => {
 
-  warningScreen.style.display = "none";
-
   noteScreen.style.display = "flex";
 
-  window.scrollTo({
-    top:0,
-    behavior:"instant"
-  });
+  warningScreen.style.display = "none";
+
+  window.scrollTo(0,0);
 
 });
 
 
-/* =====================================================
-   SEND BUTTON
-===================================================== */
-
-const sendButton =
-  document.getElementById("sendButton");
+/* =========================================================
+   SEND
+========================================================= */
 
 const replyText =
   document.getElementById("replyText");
 
+const sendButton =
+  document.getElementById("sendButton");
+
 const confirmOverlay =
   document.getElementById("confirmOverlay");
+
 
 sendButton.addEventListener("click",() => {
 
   /*
-    Jangan bisa lanjut kalau belum nulis.
+    Kalau kosong → tetap di halaman.
   */
 
   if(replyText.value.trim() === ""){
@@ -2294,8 +2191,8 @@ sendButton.addEventListener("click",() => {
     replyText.animate(
       [
         {transform:"translateX(0)"},
-        {transform:"translateX(-5px)"},
-        {transform:"translateX(5px)"},
+        {transform:"translateX(-6px)"},
+        {transform:"translateX(6px)"},
         {transform:"translateX(0)"}
       ],
       {
@@ -2307,16 +2204,22 @@ sendButton.addEventListener("click",() => {
 
   }
 
+
+  /*
+    Kalau sudah menulis →
+    munculkan konfirmasi.
+  */
+
   confirmOverlay.classList.add("show");
 
 });
 
 
-/* =====================================================
+/* =========================================================
    BELUM SIH
-   → TUTUP NOTIF
-   → BALIK KE HALAMAN SEBELUMNYA
-===================================================== */
+   → PESAN TIDAK TERKIRIM
+   → BALIK KE HALAMAN BALASAN
+========================================================= */
 
 document
 .getElementById("notYet")
@@ -2324,24 +2227,19 @@ document
 
   confirmOverlay.classList.remove("show");
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
   setTimeout(() => {
 
     replyText.focus();
 
-  },300);
+  },250);
 
 });
 
 
-/* =====================================================
+/* =========================================================
    YAKIN
    → SELESAI
-===================================================== */
+========================================================= */
 
 document
 .getElementById("yesSend")
@@ -2349,24 +2247,17 @@ document
 
   confirmOverlay.classList.remove("show");
 
-  /*
-    Untuk sekarang hanya animasi.
-    Pengiriman ke email/backend akan
-    dipasang setelah desain final.
-  */
-
   setTimeout(() => {
 
     document
       .getElementById("sentOverlay")
       .classList.add("show");
 
-  },250);
+  },200);
 
 });
-
 
 </script>
 
 </body>
-</html>
+  </html>
