@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -35,6 +35,10 @@ button{
   font-family:inherit;
   -webkit-tap-highlight-color:transparent;
 }
+
+/* =================================================
+   GENERAL
+================================================= */
 
 .screen{
   min-height:100vh;
@@ -78,8 +82,6 @@ button{
   color:#9b7a74;
   margin:12px 0 28px;
 }
-
-/* Gembok */
 
 .lock{
   position:relative;
@@ -132,8 +134,6 @@ button{
   animation:bounce .7s ease;
 }
 
-/* PIN */
-
 .pin{
   display:flex;
   justify-content:center;
@@ -158,8 +158,6 @@ button{
   font-size:30px;
   color:#9d655d;
 }
-
-/* keypad */
 
 .keypad{
   width:225px;
@@ -189,8 +187,6 @@ button{
 .delete{
   font-size:18px;
 }
-
-/* hearts */
 
 .heart{
   position:fixed;
@@ -232,13 +228,6 @@ button{
   cursor:pointer;
 }
 
-/*
-  IMPORTANT:
-  Surat preview BENAR-BENAR disembunyikan.
-  Jadi sebelum amplop dibuka tidak ada
-  kertas yang nongol/tembus pandang.
-*/
-
 .envelope{
   position:absolute;
   left:0;
@@ -249,27 +238,8 @@ button{
   border-radius:4px;
   box-shadow:0 17px 35px rgba(100,65,59,.14);
   overflow:visible;
+  transition:transform .9s ease, opacity .8s ease;
 }
-
-/* surat yang benar-benar berada DI DALAM */
-
-.hidden-letter{
-  position:absolute;
-  left:9%;
-  bottom:18px;
-  width:82%;
-  height:140px;
-  background:#fffaf5;
-  border-radius:2px;
-  z-index:1;
-  transform:translateY(20px);
-  opacity:0;
-  transition:
-    transform 1.1s cubic-bezier(.2,.8,.2,1),
-    opacity .2s;
-}
-
-/* flap */
 
 .flap{
   position:absolute;
@@ -283,8 +253,6 @@ button{
   transition:transform 1s cubic-bezier(.2,.8,.2,1);
   z-index:5;
 }
-
-/* bagian depan amplop */
 
 .front{
   position:absolute;
@@ -311,7 +279,7 @@ button{
   justify-content:center;
   align-items:center;
   font-size:19px;
-  transition:opacity .25s;
+  transition:opacity .25s, transform .5s ease;
 }
 
 .envelope-label{
@@ -332,19 +300,18 @@ button{
   margin-top:18px;
 }
 
-/* ketika dibuka */
-
+/* amplop dibuka */
 .envelope-area.opened .flap{
   transform:rotateX(180deg);
 }
 
 .envelope-area.opened .seal{
   opacity:0;
+  transform:translateX(-50%) scale(.5);
 }
 
-.envelope-area.opened .hidden-letter{
-  opacity:1;
-  transform:translateY(-92px);
+.envelope-area.opened .envelope{
+  animation:envelopeOpen .9s ease forwards;
 }
 
 /* =================================================
@@ -378,8 +345,6 @@ button{
   pointer-events:none;
 }
 
-/* greeting */
-
 .greeting{
   font-family:"Caveat",cursive;
   font-size:34px;
@@ -388,11 +353,6 @@ button{
   color:#875b55;
   margin-bottom:28px;
 }
-
-/* ISI SURAT
-   rapi, satu garis margin,
-   tidak miring
-*/
 
 .letter-body{
   width:100%;
@@ -412,8 +372,6 @@ button{
   vertical-align:-2px;
   animation:blink .8s infinite;
 }
-
-/* signoff */
 
 .signoff{
   opacity:0;
@@ -439,114 +397,99 @@ button{
 }
 
 /* =================================================
-   BOUQUET
+   AESTHETIC FLOWER
 ================================================= */
 
-.bouquet{
-  width:155px;
-  height:145px;
+.corner-flower{
   position:relative;
-  margin:25px auto 0;
+  width:150px;
+  height:155px;
+  margin:22px 0 0 auto;
   opacity:0;
-  transform:translateY(15px);
+  transform:translateX(25px);
   transition:1.2s ease;
 }
 
-.bouquet.show{
+.corner-flower.show{
   opacity:1;
-  transform:translateY(0);
+  transform:translateX(0);
 }
 
-.stem{
+.flower-stem{
   position:absolute;
-  bottom:24px;
-  left:76px;
   width:3px;
-  height:88px;
-  background:#87957b;
-  border-radius:4px;
+  height:110px;
+  background:#84927b;
+  right:55px;
+  bottom:0;
+  transform:rotate(-17deg);
+  border-radius:10px;
   transform-origin:bottom;
 }
 
-.stem.s1{transform:rotate(-20deg)}
-.stem.s2{transform:rotate(-7deg)}
-.stem.s3{transform:rotate(8deg)}
-.stem.s4{transform:rotate(21deg)}
-
-.flower{
+.flower-leaf{
   position:absolute;
-  width:34px;
-  height:34px;
-  z-index:2;
-}
-
-.flower.f1{left:35px;top:25px}
-.flower.f2{left:61px;top:8px;transform:scale(1.08)}
-.flower.f3{left:91px;top:27px;transform:scale(.9)}
-.flower.f4{left:63px;top:42px;transform:scale(.7)}
-
-.petal{
-  position:absolute;
-  width:16px;
-  height:16px;
-  border-radius:50%;
-  background:#e3aaa2;
-}
-
-.petal:nth-child(1){top:0;left:9px}
-.petal:nth-child(2){top:9px;left:0}
-.petal:nth-child(3){top:9px;right:0}
-.petal:nth-child(4){bottom:0;left:9px}
-
-.flower .center{
-  position:absolute;
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:#d38b81;
-  top:12px;
-  left:12px;
-  z-index:3;
-}
-
-.leaf{
-  position:absolute;
-  width:25px;
-  height:12px;
-  background:#a1ad96;
+  width:48px;
+  height:19px;
+  background:#9daa91;
   border-radius:100% 0 100% 0;
-  bottom:53px;
-  left:40px;
-  transform:rotate(-28deg);
+  right:55px;
+  bottom:47px;
+  transform:rotate(-25deg);
 }
 
-.leaf.l2{
-  left:91px;
+.flower-leaf.second{
+  right:13px;
+  bottom:70px;
   transform:scaleX(-1) rotate(-28deg);
 }
 
-.bouquet-paper{
+.big-flower{
   position:absolute;
+  right:4px;
+  top:4px;
+  width:82px;
+  height:82px;
+  transform:rotate(-8deg);
+}
+
+.big-petal{
+  position:absolute;
+  width:38px;
+  height:48px;
+  border-radius:55% 55% 45% 45%;
+  background:linear-gradient(145deg,#f0c7bf,#d9958b);
+  transform-origin:bottom center;
+  left:22px;
+  top:2px;
+}
+
+.big-petal.p2{transform:rotate(72deg)}
+.big-petal.p3{transform:rotate(144deg)}
+.big-petal.p4{transform:rotate(216deg)}
+.big-petal.p5{transform:rotate(288deg)}
+
+.flower-center{
+  position:absolute;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:#c87f75;
+  left:30px;
+  top:30px;
   z-index:5;
-  left:50%;
-  bottom:0;
-  transform:translateX(-50%);
-  width:78px;
-  height:63px;
-  background:#eee0d7;
-  clip-path:polygon(7% 0,93% 0,72% 100%,28% 100%);
-  border-bottom:3px solid #c89a8f;
+  box-shadow:0 2px 5px rgba(100,60,55,.12);
 }
 
 /* =================================================
-   NEXT
+   NEXT BUTTON
 ================================================= */
 
 .next-wrap{
   opacity:0;
   pointer-events:none;
-  text-align:center;
-  margin-top:25px;
+  text-align:right;
+  margin-top:18px;
   transition:opacity 1s ease;
 }
 
@@ -556,16 +499,34 @@ button{
 }
 
 .next-button{
-  width:58px;
-  height:40px;
   border:none;
-  border-radius:22px;
-  background:#efd3cd;
-  color:#805650;
-  font-size:22px;
+  background:transparent;
+  color:#a56e66;
+  font-size:30px;
   cursor:pointer;
-  box-shadow:0 5px 15px rgba(100,65,59,.1);
-  animation:float 1.5s infinite ease-in-out;
+  width:58px;
+  height:58px;
+  position:relative;
+  transition:.25s ease;
+}
+
+.next-button::before{
+  content:"";
+  position:absolute;
+  inset:6px;
+  border:1px solid #d9aaa2;
+  border-radius:50%;
+  background:rgba(255,255,255,.55);
+  box-shadow:0 5px 15px rgba(100,65,59,.08);
+  z-index:-1;
+}
+
+.next-button:hover{
+  transform:translateX(5px);
+}
+
+.next-button:active{
+  transform:scale(.9);
 }
 
 /* =================================================
@@ -663,45 +624,301 @@ button{
 }
 
 .final-content{
+  width:min(420px,100%);
   animation:finalPop 1s cubic-bezier(.2,.8,.2,1);
+}
+
+.final-card{
+  padding:42px 25px 35px;
+  border-radius:30px;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(255,255,255,.9),transparent 28%),
+    #fff7f3;
+  box-shadow:
+    0 20px 55px rgba(100,65,59,.14),
+    inset 0 0 0 1px rgba(190,130,120,.12);
+}
+
+.final-small{
+  font-family:"Caveat",cursive;
+  font-size:24px;
+  color:#a8736b;
+  margin-bottom:13px;
 }
 
 .final-text{
   font-family:"Caveat",cursive;
   font-size:clamp(43px,12vw,67px);
   line-height:.95;
-  font-weight:600;
-  color:#c46f68;
-  animation:happyShake 1.8s infinite ease-in-out;
+  font-weight:700;
+  color:#bd7169;
 }
 
-.final-heart{
-  margin:30px auto 0;
-  width:70px;
-  height:70px;
-  background:#df9188;
-  transform:rotate(45deg);
-  border-radius:13px;
+.kiss-zone{
   position:relative;
-  animation:heartBeat 1.1s infinite;
+  height:105px;
+  margin-top:16px;
 }
 
-.final-heart::before,
-.final-heart::after{
+.kiss{
+  position:absolute;
+  font-size:34px;
+  opacity:0;
+  animation:kissPop 2.2s ease-in-out infinite;
+}
+
+.kiss:nth-child(1){
+  left:20%;
+  top:25px;
+  animation-delay:0s;
+}
+
+.kiss:nth-child(2){
+  left:45%;
+  top:4px;
+  animation-delay:.45s;
+}
+
+.kiss:nth-child(3){
+  right:18%;
+  top:28px;
+  animation-delay:.9s;
+}
+
+.kiss:nth-child(4){
+  left:33%;
+  top:55px;
+  animation-delay:1.35s;
+}
+
+.final-next{
+  margin-top:8px;
+}
+
+/* =================================================
+   WARNING SCREEN
+================================================= */
+
+#warningScreen{
+  display:none;
+  min-height:100vh;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.warning-box{
+  width:min(440px,100%);
+  position:relative;
+  animation:fadeIn .8s ease;
+}
+
+.warning-bg-symbol{
+  position:absolute;
+  font-size:42px;
+  opacity:.16;
+  animation:warningPop 1.6s infinite ease-in-out;
+}
+
+.warning-bg-symbol:nth-child(1){
+  left:-5px;
+  top:-30px;
+  animation-delay:0s;
+}
+
+.warning-bg-symbol:nth-child(2){
+  right:5px;
+  top:20px;
+  animation-delay:.4s;
+}
+
+.warning-bg-symbol:nth-child(3){
+  left:20px;
+  bottom:-35px;
+  animation-delay:.8s;
+}
+
+.warning-bg-symbol:nth-child(4){
+  right:35px;
+  bottom:-20px;
+  animation-delay:1.2s;
+}
+
+.warning-card{
+  position:relative;
+  z-index:2;
+  padding:38px 25px;
+  border-radius:28px;
+  background:#fff7f3;
+  border:2px solid rgba(190,110,100,.18);
+  box-shadow:0 20px 55px rgba(100,65,59,.13);
+}
+
+.warning-title{
+  font-family:"Caveat",cursive;
+  font-size:26px;
+  color:#b35e56;
+  margin-bottom:18px;
+}
+
+.warning-text{
+  font-family:"Caveat",cursive;
+  font-size:27px;
+  line-height:1.2;
+  font-weight:600;
+  color:#704844;
+}
+
+.warning-text strong{
+  color:#bd5149;
+}
+
+.warning-tap{
+  margin-top:25px;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#a97972;
+  animation:softPulse 1.4s infinite;
+}
+
+/* =================================================
+   NOTE SCREEN
+================================================= */
+
+#noteScreen{
+  display:none;
+  min-height:100vh;
+  align-items:center;
+  justify-content:center;
+  padding:35px 20px;
+}
+
+.note-stage{
+  width:min(470px,100%);
+  animation:fadeIn .8s ease;
+}
+
+.iphone-bubble{
+  width:max-content;
+  max-width:85%;
+  margin:0 auto 25px 10px;
+  padding:12px 17px;
+  border-radius:20px 20px 20px 6px;
+  background:#e9e9eb;
+  color:#252525;
+  font-size:13px;
+  line-height:1.35;
+  box-shadow:0 4px 12px rgba(0,0,0,.07);
+  position:relative;
+  animation:bubbleIn .8s ease;
+}
+
+.iphone-bubble::after{
   content:"";
   position:absolute;
-  width:70px;
-  height:70px;
-  background:#df9188;
-  border-radius:50%;
+  left:-5px;
+  bottom:0;
+  width:12px;
+  height:12px;
+  background:#e9e9eb;
+  clip-path:polygon(100% 0,100% 100%,0 100%);
 }
 
-.final-heart::before{
-  left:-35px;
+.note-paper{
+  position:relative;
+  width:100%;
+  min-height:410px;
+  padding:43px 30px 38px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      rgba(181,135,126,.14) 32px
+    ),
+    #fffdf8;
+  border-radius:4px;
+  box-shadow:
+    0 18px 50px rgba(100,65,59,.15),
+    0 2px 5px rgba(100,65,59,.06);
+  transform:rotate(-.6deg);
 }
 
-.final-heart::after{
-  top:-35px;
+.note-paper::before{
+  content:"";
+  position:absolute;
+  left:18px;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:rgba(210,125,117,.18);
+}
+
+.note-tape{
+  position:absolute;
+  width:95px;
+  height:25px;
+  background:rgba(232,199,190,.7);
+  top:-11px;
+  left:50%;
+  transform:translateX(-50%) rotate(1deg);
+}
+
+.note-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+
+.note-small{
+  font-family:"Caveat",cursive;
+  font-size:20px;
+  color:#a87972;
+  margin-bottom:7px;
+}
+
+.send-title{
+  font-family:"DM Sans",sans-serif;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:.8px;
+  color:#654640;
+  margin-bottom:25px;
+}
+
+.send-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+
+.send-bubble{
+  border:none;
+  min-width:105px;
+  padding:12px 25px;
+  border-radius:22px;
+  background:#e8b8b0;
+  color:#68443f;
+  font-weight:600;
+  font-size:14px;
+  cursor:pointer;
+  box-shadow:0 6px 14px rgba(100,65,59,.12);
+  transition:.2s;
+}
+
+.send-bubble:active{
+  transform:scale(.93);
+}
+
+.send-arrow{
+  font-size:28px;
+  color:#9e6962;
+  animation:arrowFloat 1.5s infinite ease-in-out;
 }
 
 /* =================================================
@@ -714,14 +931,35 @@ button{
 }
 
 @keyframes paperIn{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
+  from{
+    opacity:0;
+    transform:translateY(35px) scale(.97);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
 }
 
 @keyframes bounce{
   0%,100%{transform:translateY(0)}
   40%{transform:translateY(-7px)}
   70%{transform:translateY(2px)}
+}
+
+@keyframes envelopeOpen{
+  0%{
+    transform:scale(1);
+    opacity:1;
+  }
+  70%{
+    transform:scale(1.04);
+    opacity:.85;
+  }
+  100%{
+    transform:scale(.94);
+    opacity:0;
+  }
 }
 
 @keyframes blink{
@@ -752,18 +990,13 @@ button{
   80%{transform:translateX(7px)}
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-5px)}
-}
-
 @keyframes finalPop{
   0%{
     opacity:0;
     transform:scale(.65);
   }
   70%{
-    transform:scale(1.08);
+    transform:scale(1.06);
   }
   100%{
     opacity:1;
@@ -771,27 +1004,89 @@ button{
   }
 }
 
-@keyframes happyShake{
-  0%,100%{transform:rotate(0)}
-  25%{transform:rotate(-2deg)}
-  50%{transform:rotate(2deg)}
-  75%{transform:rotate(-1deg)}
+@keyframes kissPop{
+  0%,100%{
+    opacity:0;
+    transform:scale(.3) translateY(10px) rotate(-10deg);
+  }
+  20%{
+    opacity:1;
+    transform:scale(1.25) translateY(0) rotate(8deg);
+  }
+  40%{
+    opacity:1;
+    transform:scale(1) translateY(-8px) rotate(-5deg);
+  }
+  65%{
+    opacity:.8;
+    transform:scale(1.1) translateY(-20px) rotate(7deg);
+  }
+  80%{
+    opacity:0;
+    transform:scale(.7) translateY(-38px) rotate(-8deg);
+  }
 }
 
-@keyframes heartBeat{
-  0%,100%{transform:rotate(45deg) scale(1)}
-  50%{transform:rotate(45deg) scale(1.12)}
+@keyframes warningPop{
+  0%,100%{
+    transform:scale(.65) rotate(-8deg);
+    opacity:.12;
+  }
+  50%{
+    transform:scale(1.25) rotate(8deg);
+    opacity:.3;
+  }
+}
+
+@keyframes softPulse{
+  0%,100%{opacity:.5}
+  50%{opacity:1}
+}
+
+@keyframes bubbleIn{
+  from{
+    opacity:0;
+    transform:translateY(12px) scale(.92);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes arrowFloat{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(5px)}
 }
 
 @media(max-width:420px){
-  .lock-title{font-size:45px}
+
+  .lock-title{
+    font-size:45px;
+  }
+
   .letter-body{
     font-size:13.5px;
     line-height:1.85;
   }
+
   .paper{
     padding-left:24px;
     padding-right:24px;
+  }
+
+  .corner-flower{
+    transform:translateX(20px) scale(.9);
+    transform-origin:right bottom;
+  }
+
+  .warning-text{
+    font-size:25px;
+  }
+
+  .note-paper{
+    padding-left:27px;
+    padding-right:27px;
   }
 }
 </style>
@@ -881,9 +1176,6 @@ button{
 
     <div class="envelope-area" id="envelope">
 
-      <!-- KERTAS SEPENUHNYA TERSEMBUNYI -->
-      <div class="hidden-letter"></div>
-
       <div class="envelope">
 
         <div class="flap"></div>
@@ -937,55 +1229,28 @@ button{
 
     </div>
 
+    <!-- BUNGA DI UJUNG KANAN KERTAS -->
 
-    <!-- BUKET -->
+    <div class="corner-flower" id="cornerFlower">
 
-    <div class="bouquet" id="bouquet">
+      <div class="flower-stem"></div>
 
-      <div class="stem s1"></div>
-      <div class="stem s2"></div>
-      <div class="stem s3"></div>
-      <div class="stem s4"></div>
+      <div class="flower-leaf"></div>
+      <div class="flower-leaf second"></div>
 
-      <div class="flower f1">
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="center"></div>
+      <div class="big-flower">
+
+        <div class="big-petal"></div>
+        <div class="big-petal p2"></div>
+        <div class="big-petal p3"></div>
+        <div class="big-petal p4"></div>
+        <div class="big-petal p5"></div>
+
+        <div class="flower-center"></div>
+
       </div>
-
-      <div class="flower f2">
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="center"></div>
-      </div>
-
-      <div class="flower f3">
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="center"></div>
-      </div>
-
-      <div class="flower f4">
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="center"></div>
-      </div>
-
-      <div class="leaf"></div>
-      <div class="leaf l2"></div>
-
-      <div class="bouquet-paper"></div>
 
     </div>
-
 
     <!-- NEXT -->
 
@@ -1047,13 +1312,119 @@ button{
 
   <div class="final-content">
 
-    <div class="final-text">
-      YEAYYY,<br>
-      I LOVE YOU<br>
-      SAYANGKUUUU
+    <div class="final-card">
+
+      <div class="final-small">
+        hehe... i knew it ♡
+      </div>
+
+      <div class="final-text">
+        YEAYYY,<br>
+        I LOVE YOU<br>
+        SAYANGKUUUU
+      </div>
+
+      <div class="kiss-zone">
+
+        <span class="kiss">💋</span>
+        <span class="kiss">💋</span>
+        <span class="kiss">💋</span>
+        <span class="kiss">💋</span>
+
+      </div>
+
+      <div class="next-wrap final-next" id="finalNextWrap">
+
+        <button class="next-button" id="finalNextButton">
+          →
+        </button>
+
+      </div>
+
     </div>
 
-    <div class="final-heart"></div>
+  </div>
+
+</section>
+
+
+<!-- =================================================
+     6. WARNING
+================================================= -->
+
+<section id="warningScreen">
+
+  <div class="warning-box">
+
+    <div class="warning-bg-symbol">⚠️</div>
+    <div class="warning-bg-symbol">⛔️</div>
+    <div class="warning-bg-symbol">⁉️</div>
+    <div class="warning-bg-symbol">⚠️</div>
+
+    <div class="warning-card">
+
+      <div class="warning-title">
+        ⚠️ ATTENTION PLEASE ⚠️
+      </div>
+
+      <div class="warning-text">
+        karna respon kamu terhadap love letter aku
+        tidak sesemangat aku ketika buatin kamu ini,
+        <strong>kamu harus balesin surat aku. TITIK 😤</strong>
+      </div>
+
+      <div class="warning-tap">
+        tap to continue ⛔️
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =================================================
+     7. NOTE
+================================================= -->
+
+<section id="noteScreen">
+
+  <div class="note-stage">
+
+    <div class="iphone-bubble">
+      aku mau liat sebenarnya kamu tu cinta ga si sama aku
+    </div>
+
+    <div class="note-paper">
+
+      <div class="note-tape"></div>
+
+      <div class="note-content">
+
+        <div class="note-small">
+          one last thing...
+        </div>
+
+        <div class="send-title">
+          SEND TO MY GF
+        </div>
+
+        <div class="send-row">
+
+          <button class="send-bubble" id="sendButton">
+            send
+          </button>
+
+          <div class="send-arrow">
+            →
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -1066,7 +1437,7 @@ button{
    PIN
 ================================================= */
 
-const correctPIN = "0310";
+const correctPIN = "0311";
 let enteredPIN = "";
 
 const pinBoxes = document.querySelectorAll(".pin-box");
@@ -1086,6 +1457,12 @@ const questionScreen =
 
 const finalScreen =
   document.getElementById("finalScreen");
+
+const warningScreen =
+  document.getElementById("warningScreen");
+
+const noteScreen =
+  document.getElementById("noteScreen");
 
 
 document.querySelectorAll("[data-number]").forEach(button => {
@@ -1242,6 +1619,12 @@ envelope.addEventListener("click", () => {
     9
   );
 
+  /*
+    Amplop dibuka lalu langsung berpindah
+    ke lembar surat. Tidak ada kertas
+    transparan yang keluar dari amplop.
+  */
+
   setTimeout(() => {
 
     envelopeScreen.style.display = "none";
@@ -1255,7 +1638,7 @@ envelope.addEventListener("click", () => {
 
     startTyping();
 
-  },1500);
+  },1000);
 
 });
 
@@ -1294,8 +1677,8 @@ function startTyping(){
   const signoff =
     document.getElementById("signoff");
 
-  const bouquet =
-    document.getElementById("bouquet");
+  const flower =
+    document.getElementById("cornerFlower");
 
   const nextWrap =
     document.getElementById("nextWrap");
@@ -1336,7 +1719,7 @@ function startTyping(){
 
         setTimeout(() => {
 
-          bouquet.classList.add("show");
+          flower.classList.add("show");
 
           setTimeout(() => {
 
@@ -1418,11 +1801,86 @@ document
 
   finalScreen.style.display = "flex";
 
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+
   createHearts(
     window.innerWidth/2,
     window.innerHeight/2,
     18
   );
+
+  setTimeout(() => {
+
+    document
+      .getElementById("finalNextWrap")
+      .classList.add("show");
+
+  },1800);
+
+});
+
+
+/* =================================================
+   FINAL → WARNING
+================================================= */
+
+document
+.getElementById("finalNextButton")
+.addEventListener("click",() => {
+
+  finalScreen.style.display = "none";
+
+  warningScreen.style.display = "flex";
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+
+});
+
+
+/* =================================================
+   WARNING → NOTE
+================================================= */
+
+warningScreen.addEventListener("click",() => {
+
+  warningScreen.style.display = "none";
+
+  noteScreen.style.display = "flex";
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+
+});
+
+
+/* =================================================
+   SEND
+   BELUM DIHUBUNGKAN KE FITUR BALASAN.
+   Nanti kita pasang setelah desain final.
+================================================= */
+
+document
+.getElementById("sendButton")
+.addEventListener("click",() => {
+
+  const button =
+    document.getElementById("sendButton");
+
+  button.textContent = "soon ♡";
+
+  setTimeout(() => {
+
+    button.textContent = "send";
+
+  },1600);
 
 });
 
