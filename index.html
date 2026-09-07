@@ -3,501 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>for sayangku ♡</title>
+<title>for sayangku&lt;3!</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
-  background: #f9eee9;
-  color: #59494b;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(255,255,255,.9), transparent 25%),
+    radial-gradient(circle at 90% 85%, rgba(244,197,190,.35), transparent 30%),
+    #f8eee8;
+  color: #704d48;
   font-family: "Quicksand", sans-serif;
+  overflow-x: hidden;
 }
 
-button, input {
+button {
   font-family: inherit;
 }
 
-/* PIN */
-#lockScreen {
+/* =========================
+   GENERAL
+========================= */
+
+.screen {
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 25px;
+  align-items: center;
+  padding: 30px 18px;
 }
 
-.lock {
+.hidden {
+  display: none !important;
+}
+
+/* =========================
+   PIN SCREEN
+========================= */
+
+#lockScreen {
+  position: relative;
+  overflow: hidden;
+}
+
+.lock-container {
   width: 100%;
-  max-width: 380px;
+  max-width: 390px;
   text-align: center;
+  animation: fadeUp 1s ease;
+}
+
+.mini-title {
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  color: #a56f69;
+  margin-bottom: 14px;
+}
+
+.lock-title {
+  font-family: "Caveat", cursive;
+  font-size: clamp(40px, 11vw, 55px);
+  font-weight: 500;
+  color: #714c47;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.lock-subtitle {
+  font-size: 12px;
+  letter-spacing: .3px;
+  color: #9b7771;
+  margin-bottom: 30px;
+}
+
+/* LOCK */
+
+.lock-wrap {
+  width: 150px;
+  height: 160px;
+  margin: 0 auto 25px;
+  position: relative;
+}
+
+.lock-body {
+  width: 105px;
+  height: 90px;
+  background: linear-gradient(145deg, #f4c8c0, #e8afa7);
+  border-radius: 25px;
+  position: absolute;
+  bottom: 5px;
+  left: 22px;
+  box-shadow:
+    0 12px 25px rgba(130,75,68,.15),
+    inset 0 2px 5px rgba(255,255,255,.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 }
 
 .lock-heart {
-  font-size: 42px;
-  color: #c9959c;
-  margin-bottom: 15px;
+  font-size: 38px;
+  color: #8c5751;
+  line-height: 1;
 }
 
-.lock h1 {
-  font-size: 23px;
-  font-weight: 500;
-  margin-bottom: 8px;
+.lock-shackle {
+  width: 67px;
+  height: 75px;
+  border: 10px solid #c98279;
+  border-bottom: 0;
+  border-radius: 42px 42px 0 0;
+  position: absolute;
+  top: 15px;
+  left: 41px;
+  z-index: 1;
+  transform-origin: 15px 65px;
+  transition: transform .8s cubic-bezier(.2,.8,.2,1);
 }
 
-.lock p {
-  font-size: 14px;
-  color: #9a8587;
-  margin-bottom: 25px;
+.lock-wrap.open .lock-shackle {
+  transform: rotate(-38deg) translate(-8px,-5px);
 }
 
-#pin {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #dfc8c7;
-  border-radius: 14px;
-  background: #fffaf7;
-  outline: none;
-  text-align: center;
-  letter-spacing: 8px;
-  font-size: 19px;
-  color: #59494b;
+.lock-wrap.open .lock-body {
+  animation: lockBounce .7s ease;
 }
 
-.unlock {
-  width: 100%;
-  margin-top: 12px;
-  padding: 13px;
-  border: none;
-  border-radius: 14px;
-  background: #dcb6bb;
-  color: white;
-  font-size: 15px;
-}
+/* PIN BOXES */
 
-#error {
-  display: none;
-  margin-top: 10px;
-  color: #bd777f;
-  font-size: 13px;
-}
-
-/* ENVELOPE */
-#envelopePage {
-  display: none;
-  min-height: 100vh;
-  align-items: center;
+.pin-boxes {
+  display: flex;
   justify-content: center;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
+  gap: 11px;
+  margin-bottom: 22px;
 }
 
-.envelope-wrap {
-  position: relative;
-  width: 290px;
-  height: 210px;
-  cursor: pointer;
-}
-
-.envelope {
-  position: absolute;
-  bottom: 0;
-  width: 290px;
-  height: 190px;
-  background: #ead0d0;
-  border-radius: 5px;
-  box-shadow: 0 15px 35px rgba(100,70,70,.13);
-}
-
-.envelope:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-left: 145px solid #e2c2c5;
-  border-top: 95px solid transparent;
-  border-bottom: 95px solid #dfbdc0;
-}
-
-.envelope:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  border-right: 145px solid #e2c2c5;
-  border-top: 95px solid transparent;
-  border-bottom: 95px solid #dfbdc0;
-}
-
-.flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 145px solid transparent;
-  border-right: 145px solid transparent;
-  border-top: 105px solid #d8b4b8;
-  transform-origin: top;
-  transition: transform .9s ease;
-  z-index: 4;
-}
-
-.envelope-text {
-  position: absolute;
-  z-index: 5;
-  width: 100%;
-  top: 82px;
-  text-align: center;
-  font-size: 22px;
-  color: #72595d;
-  pointer-events: none;
-  font-weight: 500;
-}
-
-.tap {
-  margin-top: 22px;
-  color: #9c8587;
-  font-size: 13px;
-}
-
-/* OPENED */
-.opened .flap {
-  transform: rotateX(180deg);
-}
-
-.opened .envelope-text {
-  opacity: 0;
-}
-
-.love {
-  position: absolute;
-  opacity: 0;
-  font-size: 18px;
-  color: #c88f98;
-  pointer-events: none;
-}
-
-.opened .love {
-  animation: floatLove 2.5s ease forwards;
-}
-
-.l1 { left: 15%; top: 40%; }
-.l2 { left: 28%; top: 55%; animation-delay: .2s !important; }
-.l3 { right: 20%; top: 42%; animation-delay: .4s !important; }
-.l4 { right: 30%; top: 57%; animation-delay: .6s !important; }
-.l5 { left: 45%; top: 35%; animation-delay: .8s !important; }
-
-@keyframes floatLove {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(.7);
-  }
-  30% { opacity: 1; }
-  100% {
-    opacity: 0;
-    transform: translateY(-130px) scale(1.15);
-  }
-}
-
-/* BOUQUET */
-.bouquet {
-  position: absolute;
-  bottom: -20px;
-  opacity: 0;
-  transform: translateY(25px);
-  transition: 1s ease;
-  font-size: 65px;
-  z-index: 8;
-}
-
-.opened .bouquet {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* GREETING */
-#greeting {
-  display: none;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 30px;
-}
-
-.greeting-inner {
-  max-width: 500px;
-}
-
-.greeting-flower {
-  font-size: 65px;
-  margin-bottom: 20px;
-}
-
-.greeting h1 {
-  font-size: 27px;
-  line-height: 1.5;
-  font-weight: 500;
-  color: #72595d;
-}
-
-.next {
-  margin-top: 25px;
-  border: 1px solid #d8b8ba;
-  background: transparent;
-  color: #80696c;
-  padding: 10px 25px;
-  border-radius: 20px;
-}
-
-/* LETTER */
-#letterPage {
-  display: none;
-  padding: 35px 17px 60px;
-}
-
-.paper {
-  max-width: 720px;
-  margin: auto;
-  background: #fffaf6;
-  border: 1px solid #eadbd6;
-  border-radius: 18px;
-  padding: 40px 28px;
-  box-shadow: 0 12px 35px rgba(90,60,60,.08);
-}
-
-.paper-title {
-  text-align: center;
-  font-size: 29px;
-  font-weight: 500;
-  color: #745b60;
-  margin-bottom: 35px;
-}
-
-.opening {
-  font-size: 20px;
-  line-height: 1.7;
-  margin-bottom: 25px;
-  color: #856a6d;
-}
-
-.letter {
-  font-family: "Quicksand", sans-serif;
-  font-size: 16px;
-  line-height: 1.9;
-  white-space: pre-line;
-  color: #625456;
-}
-
-.signoff {
-  margin-top: 38px;
-  text-align: right;
-  color: #806469;
-  font-size: 19px;
-  line-height: 1.7;
-}
-
-@media(max-width:500px) {
-  .paper {
-    padding: 30px 21px;
-  }
-
-  .paper-title {
-    font-size: 25px;
-  }
-
-  .letter {
-    font-size: 15px;
-    line-height: 1.85;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<!-- PIN -->
-<section id="lockScreen">
-  <div class="lock">
-    <div class="lock-heart">♡</div>
-    <h1>a little something for you</h1>
-    <p>enter the little secret ♡</p>
-
-    <input id="pin"
-      type="password"
-      inputmode="numeric"
-      maxlength="4"
-      placeholder="••••">
-
-    <button class="unlock" onclick="unlock()">open ♡</button>
-
-    <div id="error">wrong pin, try again ♡</div>
-  </div>
-</section>
-
-
-<!-- ENVELOPE -->
-<section id="envelopePage">
-
-  <div class="envelope-wrap" id="envelopeWrap" onclick="openEnvelope()">
-
-    <div class="love l1">♡</div>
-    <div class="love l2">♡</div>
-    <div class="love l3">♡</div>
-    <div class="love l4">♡</div>
-    <div class="love l5">♡</div>
-
-    <div class="bouquet">💐</div>
-
-    <div class="envelope">
-      <div class="flap"></div>
-
-      <div class="envelope-text">
-        for 𝒔𝒂𝒚𝒂𝒏𝒈𝒌𝒖&lt;3!
-      </div>
-    </div>
-  </div>
-
-  <div class="tap" id="tapText">tap the envelope ♡</div>
-
-</section>
-
-
-<!-- GREETING -->
-<section id="greeting">
-
-  <div class="greeting-inner">
-
-    <div class="greeting-flower">💐</div>
-
-    <h1>
-      haii sayaangg,<br>
-      how have ur days been??
-    </h1>
-
-    <button class="next" onclick="showLetter()">
-      next ♡
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- LETTER -->
-<section id="letterPage">
-
-  <div class="paper">
-
-    <div class="paper-title">
-      𝒇𝒐𝒓 𝒔𝒂𝒚𝒂𝒏𝒈𝒌𝒖&lt;3!
-    </div>
-
-    <div class="opening">
-      haii sayaangg, how have ur days been??
-    </div>
-
-    <div class="letter">sebenarnya belum hari anniv kita si ya. tapi aku pengen aja ngasi ke kamu ini sekarang, gapapa kan? heheh, ini alay banget si jujurly ..tapi gapapa. kapan lagi ngasi my pacar kesayangan aku ini surat² an digital kan haha.
-
-i don't really know how to start this but i have a lot of things i want you to know.
-
-ekhem. di pertemuan ( mungkin lebih tepat pertemuan takdir deh ahayy ) yang ga sengaja kita ' di bot tele ' itu, kayanya pertama aku mau minta maaf ke kamu atasss segala tingkah dan mood aku yang tentunya bikin kamu capek, kesal dan shocked pada awalnya. atau bahkan bikin kamu merasa hubungan kita jadi berat. entah itu ke mood swing an aku, yang tiba² ngambek gajelas, tiba² marah, tiba² sedih, serba tiba² deh pokoknya, atau reaksi ga masuk akal aku.
-
-maaf juga kalo aku sering bikin kita berantem padahal mungkin masalahnya cuma secuil tapi malah jadi kemana².
-
-maaf kalau terkadang aku ga bisa cukup ngerti keadaan kamu. aku terlalu fokus sama apa yang aku rasain sampai lupa kalau kamu juga bisa capek, punya banyak hal dipikiran kamu, punya capek sendiri, punya kesibukan sendiri, punya masalah sendiri.
-
-maaf kalau aku sering minta untuk dimengerti tapi malah kadang gabisa ngertiin kamu. maaf kalau aku terlalu sering minta perhatian kamu sampai mungkin kesannya aku selalu merasa kurang.
-
-sometimes i don’t know how to express my love the way i should. aku sayang kamu, banget.. i just know that the way i've shown it hasn’t always been the right way.
-
-kadang malah jadi terlalu banyak nanya, terlalu banyak mikir, terlalu banyak berharap, terlalu gampang ovt.
-
-besides that...i also want to thank you.
-
-makasi karna selama setahun kurang 2 bulan ini kamu masi mau sabar ngadepin aku dan masi mau berusaha ngertiin aku. makasi karna kamu masi mau dengerin cerita² aku yang bahkan kadang ga penting.
-
-makasi juga udah dengerin keluhan² atau hal² kecil yang kayanya juga ga sepenting itu untuk dibilang.
-
-makasi udah nemenin hari² aku meskipun 96% nya lewat chat. i might not always say it, but i really appreciate those moments.
-
-anddd... i know i don’t always show my appreciation in the best way. kadang aku malah lebih gampang nunjukin apa yang kurang daripada ngingat everything you’ve done for me. and i’m sorry for that too.
-
-maaf yaa aku masi banyak kurang nyaa, dan mungkin akan ada disaat aku salah lagi.
-
-oiyaa, tentang call an.. mungkin call an sama aku terkesan krik² dan ga asik, karna banyak hal jugaa. pertama mungkin kamu pacar terlama aku, dan walaupun udah terlama tapi rasanya masi gugup aja kalo call an sama kamu, karna kan konsepnya kita pasangan yaa, jadii ya gitu deh hehe.
-
-yang kedua mungkin karna kita belum pernah benar² face to face, so aku masi sedikit susah buat mengekspresikan diri aku lewat suara. ke temen² aku yang ga deket sama aku juga canggung kok telfonannya.
-
-yang ketiga kayanya ya karna tempat dan kondisi deh, itu juga lebih bikin terbatas buat ngomongnya. maaf yaaa.
-
-kalo soal pap..emm, aku masi ga percaya diri aja. karna aku emang ga cantik sama sekali ( suer ). jadi kalo kamu minta pap tu aku kadang takut ngerasa terlalu jelek untuk dikasi ke kamu. karna direalitanya aku ga secantik di kamera.. maaf yaa.
-
-dan kalau aku buat salah lagi kamu bilang aja okeyy.. even if i might feel sad, hurt, or upset. tapi aku lebih suka ketika kamu ungkapin apa yang salah dari aku daripada kamu pendem karna takut jadi masalah or karna hal lain , so i can learn from it and do better.
-
-ihh panjang banget ya ternyataa hehe. thank youuu for reading all the way to the end, and sorry if this was a little cringe to read.</div>
-
-    <div class="signoff">
-      love,<br>
-      your girl 𝓪𝓻𝓲𝓷 𓍢ִ໋🌷͙֒
-    </div>
-
-  </div>
-
-</section>
-
-
-<script>
-function unlock() {
-  const pin = document.getElementById("pin").value;
-
-  if (pin === "0310") {
-    document.getElementById("lockScreen").style.display = "none";
-    document.getElementById("envelopePage").style.display = "flex";
-  } else {
-    document.getElementById("error").style.display = "block";
-    document.getElementById("pin").value = "";
-  }
-}
-
-function openEnvelope() {
-  const env = document.getElementById("envelopeWrap");
-  const tap = document.getElementById("tapText");
-
-  if (!env.classList.contains("opened")) {
-    env.classList.add("opened");
-    tap.style.opacity = "0";
-
-    setTimeout(() => {
-      document.getElementById("envelopePage").style.display = "none";
-      document.getElementById("greeting").style.display = "flex";
-    }, 2300);
-  }
-}
-
-function showLetter() {
-  document.getElementById("greeting").style.display = "none";
-  document.getElementById("letterPage").style.display = "block";
-  window.scrollTo(0, 0);
-}
-
-document.getElementById("pin").addEventListener("keydown", function(e) {
-  if (e.key === "Enter") {
-    unlock();
-  }
-});
-</script>
-
-</body>
-</html>
+.pin-box {
+  width: 48px;
+  height: 52px;
+  background: rgba(255,255,255,.65);
+  border: 1px solid #e5cbc4;
+  border-radius: 10px;
+  box-shadow: 0
